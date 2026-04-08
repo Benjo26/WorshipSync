@@ -464,60 +464,25 @@
                 linear-gradient(135deg, rgba(255, 252, 248, 0.98), rgba(245, 236, 221, 0.92));
         }
 
-        .studio-shell {
-            display: grid;
-            grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
-            gap: 28px;
-            align-items: start;
-        }
+            .studio-shell {
+                display: grid;
+                grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+                gap: 28px;
+                align-items: start;
+            }
 
-        .studio-main {
-            display: grid;
-            gap: 22px;
-            padding: 30px;
-            background:
-                linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
-        }
+            .studio-shell-single {
+                grid-template-columns: minmax(0, 980px);
+                justify-content: start;
+            }
 
-        .studio-side {
-            position: sticky;
-            top: 112px;
-            display: grid;
-            gap: 18px;
-            padding: 30px;
-            background:
-                radial-gradient(circle at top right, rgba(241, 198, 120, 0.18), transparent 34%),
-                linear-gradient(180deg, rgba(8, 58, 49, 0.98), rgba(15, 93, 80, 0.92));
-            color: #fff8ef;
-            box-shadow: var(--shadow-deep);
-        }
-
-        .studio-side h2 {
-            font-size: 2.2rem;
-            line-height: 0.96;
-        }
-
-        .studio-side p {
-            margin: 0;
-            color: rgba(255, 248, 239, 0.82);
-        }
-
-        .side-note {
-            padding: 18px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .side-note span {
-            display: inline-block;
-            margin-bottom: 10px;
-            color: #f2c779;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-weight: 700;
-        }
+            .studio-main {
+                display: grid;
+                gap: 22px;
+                padding: 30px;
+                background:
+                    linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+            }
 
         .studio-grid {
             display: grid;
@@ -673,16 +638,12 @@
             padding-left: 1.2rem;
         }
 
-        @media (max-width: 1024px) {
-            .studio-shell,
-            .hero {
-                grid-template-columns: 1fr;
+            @media (max-width: 1024px) {
+                .studio-shell,
+                .hero {
+                    grid-template-columns: 1fr;
+                }
             }
-
-            .studio-side {
-                position: static;
-            }
-        }
 
         @media (max-width: 840px) {
             .shell {
@@ -708,15 +669,14 @@
             }
 
             .hero > div:first-child,
-            .library-hero,
-            .panel,
-            .song-card,
-            .feature-card,
-            .empty-card,
-            .studio-main,
-            .studio-side {
-                padding: 22px;
-            }
+                .library-hero,
+                .panel,
+                .song-card,
+                .feature-card,
+                .empty-card,
+                .studio-main {
+                    padding: 22px;
+                }
         }
     </style>
     @if ($hasViteBuild)
