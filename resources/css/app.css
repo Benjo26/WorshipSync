@@ -552,6 +552,26 @@ small {
     line-height: 1.8;
 }
 
+.measure-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.measure {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    background: rgba(17, 92, 79, 0.08);
+    border: 1px solid rgba(17, 92, 79, 0.12);
+    color: var(--accent-strong);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
 .chord {
     color: var(--accent-strong);
     font-weight: 700;
@@ -812,5 +832,10 @@ small {
     .chart-lines {
         font-size: 0.96rem;
         line-height: 1.65;
+    }
+
+    .measure {
+        min-width: 58px;
+        padding: 7px 12px;
     }
 }

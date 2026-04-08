@@ -64,8 +64,38 @@
                     return index === -1 ? match : NOTES[(index + steps + NOTES.length) % NOTES.length];
                 });
 
-            const renderLine = (line, steps) =>
-                line.replace(/\[([^\]]+)\]/g, (_, chord) => `<span class="chord">[${transposeChord(chord, steps)}]</span>`);
+            const BAR_CHORD_PATTERN = /^\|?\s*[A-G][^|]*\|/;
+
+            const renderBarLine = (line, steps) => {
+                const segments = line.split('|');
+
+                if (segments.length < 3) {
+                    return null;
+                }
+
+                const measures = segments
+                    .map((segment) => segment.trim())
+                    .filter((segment) => segment.length > 0)
+                    .map((segment) => `<span class="measure">${transposeChord(segment, steps)}</span>`);
+
+                if (measures.length === 0) {
+                    return null;
+                }
+
+                return `<span class="measure-line">${measures.join('')}</span>`;
+            };
+
+            const renderLine = (line, steps) => {
+                if (BAR_CHORD_PATTERN.test(line.trim())) {
+                    const renderedBarLine = renderBarLine(line, steps);
+
+                    if (renderedBarLine) {
+                        return renderedBarLine;
+                    }
+                }
+
+                return line.replace(/\[([^\]]+)\]/g, (_, chord) => `<span class="chord">[${transposeChord(chord, steps)}]</span>`);
+            };
 
             const bootSongPlayer = (root) => {
                 const chart = JSON.parse(root.dataset.chart || '{"sections": []}');

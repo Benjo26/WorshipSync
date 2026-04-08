@@ -45,6 +45,6 @@
     <label class="chart-field">
         <span>ChordPro Chart</span>
         <textarea name="chordpro" rows="18" required data-chordpro-input>{{ old('chordpro', $chordPro) }}</textarea>
-        <small>Use ChordPro tags like <code>{title: }</code>, <code>{artist: }</code>, <code>{comment: Verse 1}</code>, <code>{soc}</code>, and inline chords like <code>[G]Amazing [D]grace</code>.</small>
+        <small>Use ChordPro tags like <code>{title: }</code>, <code>{artist: }</code>, <code>{comment: Verse 1}</code>, inline chords like <code>[G]Amazing [D]grace</code>, or bar lines like <code>| Am | F | G | C |</code>.</small>
     </label>
 </div>

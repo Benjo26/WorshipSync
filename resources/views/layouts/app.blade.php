@@ -585,18 +585,38 @@
             padding-bottom: 0;
         }
 
-        .chart-lines {
-            display: grid;
-            gap: 12px;
-            white-space: pre-wrap;
-            font-size: 1.04rem;
-            line-height: 1.82;
-        }
+            .chart-lines {
+                display: grid;
+                gap: 12px;
+                white-space: pre-wrap;
+                font-size: 1.04rem;
+                line-height: 1.82;
+            }
 
-        .chord {
-            color: var(--accent-strong);
-            font-weight: 700;
-        }
+            .measure-line {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .measure {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 72px;
+                padding: 8px 14px;
+                border-radius: 14px;
+                background: rgba(15, 93, 80, 0.08);
+                border: 1px solid rgba(15, 93, 80, 0.12);
+                color: var(--accent-strong);
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .chord {
+                color: var(--accent-strong);
+                font-weight: 700;
+            }
 
         .beat-indicator {
             margin-left: auto;
@@ -854,6 +874,11 @@
                 .chart-lines {
                     font-size: 0.96rem;
                     line-height: 1.65;
+                }
+
+                .measure {
+                    min-width: 58px;
+                    padding: 7px 12px;
                 }
             }
         </style>
