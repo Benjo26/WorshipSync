@@ -1,20 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="page-head">
-        <div>
+    <section class="library-hero">
+        <div class="library-hero-copy">
             <p class="eyebrow">Songs</p>
             <h1>Song Library</h1>
+            <p class="section-lead">
+                Browse, edit, and open every chart from one premium rehearsal view.
+            </p>
         </div>
-        <a class="button" href="{{ route('songs.create') }}">New Song</a>
+        <div class="library-hero-actions">
+            <a class="button" href="{{ route('songs.create') }}">New Song</a>
+        </div>
     </section>
 
-    <section class="song-grid">
-        @foreach ($songs as $song)
+    <section class="section-block">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">All Charts</p>
+                <h2>Your Songs</h2>
+            </div>
+        </div>
+
+        <div class="song-grid">
+        @forelse ($songs as $song)
             <article class="song-card">
                 <p class="song-meta">{{ $song->artist ?: 'Unknown Artist' }}</p>
                 <h2>{{ $song->title }}</h2>
-                <p>{{ $song->default_key }} • {{ $song->bpm }} BPM • {{ implode(' / ', $song->structure) }}</p>
+                <div class="song-tags">
+                    <span>{{ $song->default_key }}</span>
+                    <span>{{ $song->bpm }} BPM</span>
+                    <span>{{ $song->time_signature }}</span>
+                </div>
                 <div class="inline-actions">
                     <a class="button ghost" href="{{ route('songs.player', $song) }}">Player</a>
                     <a class="button subtle" href="{{ route('songs.edit', $song) }}">Edit</a>
@@ -25,7 +42,15 @@
                     </form>
                 </div>
             </article>
-        @endforeach
+        @empty
+            <article class="empty-card">
+                <p class="eyebrow">Curate Your First Chart</p>
+                <h2>Your library is ready.</h2>
+                <p>Start with one ChordPro song and turn this into a refined archive for your worship team.</p>
+                <a class="button" href="{{ route('songs.create') }}">Create Song</a>
+            </article>
+        @endforelse
+        </div>
     </section>
 
     <div class="pagination-wrap">

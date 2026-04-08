@@ -14,7 +14,8 @@
     </div>
 @endif
 
-<div class="form-grid">
+<div class="studio-grid">
+    <div class="metadata-grid">
     <label>
         <span>Song Title</span>
         <input name="title" value="{{ old('title', $song?->title) }}" required data-song-title-input>
@@ -39,8 +40,9 @@
         <span>Time Signature</span>
         <input name="time_signature" value="{{ old('time_signature', $song?->time_signature ?? '4/4') }}" required>
     </label>
+    </div>
 
-    <label class="full">
+    <label class="chart-field">
         <span>ChordPro Chart</span>
         <textarea name="chordpro" rows="18" required data-chordpro-input>{{ old('chordpro', $chordPro) }}</textarea>
         <small>Use ChordPro tags like <code>{title: }</code>, <code>{artist: }</code>, <code>{comment: Verse 1}</code>, <code>{soc}</code>, and inline chords like <code>[G]Amazing [D]grace</code>.</small>

@@ -492,7 +492,13 @@
 <body>
     <div class="shell">
         <header class="topbar">
-            <a class="brand" href="{{ route('welcome') }}">WorshipSync</a>
+            <a class="brand" href="{{ route('welcome') }}">
+                <span class="brand-mark">WS</span>
+                <span class="brand-text">
+                    <strong>WorshipSync</strong>
+                    <small>Setlist Studio</small>
+                </span>
+            </a>
 
             <nav class="topnav">
                 @auth
