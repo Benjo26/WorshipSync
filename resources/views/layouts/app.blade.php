@@ -74,6 +74,7 @@
         .content {
             display: grid;
             gap: 30px;
+            min-width: 0;
         }
 
         .topbar,
@@ -234,6 +235,7 @@
         .library-hero-copy,
         .page-head > div {
             max-width: 880px;
+            min-width: 0;
         }
 
         .hero h1,
@@ -643,32 +645,134 @@
                 .hero {
                     grid-template-columns: 1fr;
                 }
+
+                .studio-shell-single {
+                    grid-template-columns: 1fr;
+                }
             }
 
-        @media (max-width: 840px) {
-            .shell {
-                width: min(100% - 24px, 100%);
-            }
+            @media (max-width: 840px) {
+                .shell {
+                    width: min(100% - 20px, 100%);
+                    padding: 14px 0 40px;
+                }
 
-            .topbar,
-            .page-head,
+                .topbar,
+                .page-head,
             .player-head,
             .player-toolbar,
             .library-hero,
-            .section-head {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+                .section-head {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
 
-            .topnav {
-                flex-wrap: wrap;
-            }
+                .topbar {
+                    position: static;
+                    gap: 14px;
+                    padding: 16px;
+                    margin-bottom: 18px;
+                    border-radius: 24px;
+                }
 
-            .metadata-grid {
-                grid-template-columns: 1fr;
-            }
+                .brand {
+                    width: 100%;
+                    align-items: flex-start;
+                }
 
-            .hero > div:first-child,
+                .brand-mark {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 14px;
+                }
+
+                .brand-text strong {
+                    font-size: 1.2rem;
+                }
+
+                .brand-text small {
+                    font-size: 0.62rem;
+                    letter-spacing: 0.1em;
+                }
+
+                .topnav {
+                    width: 100%;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+
+                .topnav a,
+                .topnav form {
+                    width: 100%;
+                }
+
+                .topnav .button,
+                .topnav a:not(.button) {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .metadata-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .hero h1,
+                .page-head h1,
+                .player-head h1,
+                .library-hero h1 {
+                    font-size: clamp(2.2rem, 12vw, 3.4rem);
+                    line-height: 0.95;
+                }
+
+                .lead,
+                .section-lead {
+                    font-size: 0.98rem;
+                    line-height: 1.6;
+                }
+
+                .stats-grid,
+                .song-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .feature-card::before {
+                    position: static;
+                    display: inline-flex;
+                    margin-bottom: 14px;
+                }
+
+                .button,
+                .inline-actions .button,
+                .hero-actions .button,
+                .library-hero-actions .button,
+                .studio-actions .button,
+                .danger-zone .button {
+                    width: 100%;
+                }
+
+                .inline-actions,
+                .hero-actions,
+                .library-hero-actions,
+                .studio-actions,
+                .danger-zone,
+                .player-toolbar,
+                .toolbar-group {
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                .song-tags {
+                    gap: 8px;
+                }
+
+                .song-tags span {
+                    width: 100%;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .hero > div:first-child,
                 .library-hero,
                 .panel,
                 .song-card,
@@ -677,8 +781,82 @@
                 .studio-main {
                     padding: 22px;
                 }
-        }
-    </style>
+
+                .studio-main,
+                .player-shell {
+                    padding: 20px;
+                }
+
+                textarea {
+                    min-height: 320px;
+                }
+
+                input,
+                textarea,
+                select {
+                    font-size: 16px;
+                }
+            }
+
+            @media (max-width: 520px) {
+                body::before {
+                    background-size: 40px 40px;
+                }
+
+                .shell {
+                    width: calc(100% - 16px);
+                    padding: 10px 0 28px;
+                }
+
+                .topbar,
+                .hero > div:first-child,
+                .library-hero,
+                .panel,
+                .song-card,
+                .feature-card,
+                .empty-card,
+                .flash,
+                .error-box,
+                .section-block,
+                .player-shell {
+                    border-radius: 22px;
+                }
+
+                .hero > div:first-child,
+                .library-hero,
+                .panel,
+                .song-card,
+                .feature-card,
+                .empty-card,
+                .studio-main,
+                .player-shell {
+                    padding: 18px;
+                }
+
+                .hero h1,
+                .page-head h1,
+                .player-head h1,
+                .library-hero h1 {
+                    font-size: clamp(1.95rem, 11vw, 2.8rem);
+                }
+
+                .section-head h2,
+                .feature-card h2,
+                .song-card h2,
+                .empty-card h2 {
+                    font-size: 1.35rem;
+                }
+
+                .button {
+                    padding: 13px 18px;
+                }
+
+                .chart-lines {
+                    font-size: 0.96rem;
+                    line-height: 1.65;
+                }
+            }
+        </style>
     @if ($hasViteBuild)
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
