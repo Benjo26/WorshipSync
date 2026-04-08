@@ -1,11 +1,6 @@
 @php
     $song = $song ?? null;
-    $chart = $chart ?? [
-        'sections' => [
-            ['name' => 'Verse 1', 'lines' => ['[G]Amazing [D]grace']],
-            ['name' => 'Chorus', 'lines' => ['[C]Hallelujah']],
-        ],
-    ];
+    $chordPro = $chordPro ?? "{title: Amazing Grace}\n{artist: Traditional}\n\n{comment: Verse 1}\n[G]Amazing [D]grace how [Em]sweet the [C]sound\n\n{soc}\n[C]Hallelujah [G]we sing\n{eoc}";
 @endphp
 
 @if ($errors->any())
@@ -61,8 +56,8 @@
     </label>
 
     <label class="full">
-        <span>Chord Chart JSON</span>
-        <textarea name="chart_json_raw" rows="16" required>{{ old('chart_json_raw', json_encode($chart, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)) }}</textarea>
-        <small>Use section names and lyric lines with chords like <code>[G]Amazing [D]grace</code>.</small>
+        <span>ChordPro Chart</span>
+        <textarea name="chordpro" rows="18" required>{{ old('chordpro', $chordPro) }}</textarea>
+        <small>Use ChordPro tags like <code>{title: }</code>, <code>{comment: Verse 1}</code>, <code>{soc}</code>, and inline chords like <code>[G]Amazing [D]grace</code>.</small>
     </label>
 </div>

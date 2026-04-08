@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('songs.update', $song) }}" class="panel">
         @csrf
         @method('PUT')
-        @include('songs._form', ['song' => $song, 'chart' => $chart])
+        @include('songs._form', ['song' => $song, 'chordPro' => $chordPro])
         <div class="inline-actions">
             <button class="button" type="submit">Update Song</button>
             <a class="button ghost" href="{{ route('songs.player', $song) }}">Cancel</a>

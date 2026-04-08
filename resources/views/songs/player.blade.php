@@ -8,6 +8,7 @@
         data-bpm="{{ $song->bpm }}"
         data-beats-per-bar="{{ (int) explode('/', $song->time_signature)[0] }}"
         data-chart='@json($chart)'
+        data-chordpro='@json($chordPro)'
     >
         <div class="player-head">
             <div>

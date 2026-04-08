@@ -25,11 +25,7 @@ class WorshipSyncRoutesTest extends TestCase
 
         $user = User::factory()->create();
 
-        Storage::disk('local')->put('songs/test-chart.json', json_encode([
-            'sections' => [
-                ['name' => 'Verse 1', 'lines' => ['[G]Amazing grace']],
-            ],
-        ]));
+        Storage::disk('local')->put('songs/test-chart.chordpro', "{comment: Verse 1}\n[G]Amazing grace");
 
         $song = Song::query()->create([
             'user_id' => $user->id,
@@ -39,7 +35,7 @@ class WorshipSyncRoutesTest extends TestCase
             'bpm' => 72,
             'time_signature' => '4/4',
             'structure' => ['Verse 1'],
-            'chart_path' => 'songs/test-chart.json',
+            'chart_path' => 'songs/test-chart.chordpro',
             'notes' => 'Watch the intro dynamics.',
         ]);
 
@@ -52,4 +48,3 @@ class WorshipSyncRoutesTest extends TestCase
         $response->assertSee('Tap Tempo');
     }
 }
-

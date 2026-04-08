@@ -7,27 +7,27 @@ use Ramsey\Uuid\Uuid;
 
 class SongChartStorage
 {
-    public function store(array $chart): string
+    public function store(string $chart): string
     {
         $path = $this->path();
 
-        Storage::disk('local')->put($path, json_encode($chart, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        Storage::disk('local')->put($path, $chart);
 
         return $path;
     }
 
-    public function read(string $path): array
+    public function read(string $path): string
     {
         if (! Storage::disk('local')->exists($path)) {
-            return ['sections' => []];
+            return '';
         }
 
-        return json_decode(Storage::disk('local')->get($path), true) ?: ['sections' => []];
+        return Storage::disk('local')->get($path);
     }
 
-    public function replace(string $path, array $chart): string
+    public function replace(string $path, string $chart): string
     {
-        Storage::disk('local')->put($path, json_encode($chart, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        Storage::disk('local')->put($path, $chart);
 
         return $path;
     }
@@ -39,6 +39,6 @@ class SongChartStorage
 
     private function path(): string
     {
-        return 'songs/' . Uuid::uuid7()->toString() . '.json';
+        return 'songs/' . Uuid::uuid7()->toString() . '.chordpro';
     }
 }

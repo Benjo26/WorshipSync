@@ -13,11 +13,9 @@ class SongRequest extends FormRequest
             explode(',', (string) $this->input('structure_csv', ''))
         )));
 
-        $chart = json_decode((string) $this->input('chart_json_raw', ''), true);
-
         $this->merge([
             'structure' => $structure,
-            'chart_json' => is_array($chart) ? $chart : null,
+            'chordpro' => trim((string) $this->input('chordpro', '')),
         ]);
     }
 
@@ -37,19 +35,14 @@ class SongRequest extends FormRequest
             'notes' => ['nullable', 'string'],
             'structure' => ['required', 'array', 'min:1'],
             'structure.*' => ['required', 'string', 'max:50'],
-            'chart_json' => ['required', 'array'],
-            'chart_json.sections' => ['required', 'array', 'min:1'],
-            'chart_json.sections.*.name' => ['required', 'string', 'max:100'],
-            'chart_json.sections.*.lines' => ['required', 'array', 'min:1'],
-            'chart_json.sections.*.lines.*' => ['required', 'string'],
+            'chordpro' => ['required', 'string', 'min:3'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'chart_json.required' => 'The chord chart must be valid JSON.',
-            'chart_json.array' => 'The chord chart must decode into a JSON object.',
+            'chordpro.required' => 'Add the song chart in ChordPro format.',
             'structure.min' => 'Add at least one section to the song structure.',
         ];
     }
