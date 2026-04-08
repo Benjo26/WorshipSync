@@ -47,20 +47,7 @@
             </div>
         </section>
 
-        <section class="structure-strip">
-            @foreach ($song->structure as $part)
-                <span>{{ $part }}</span>
-            @endforeach
-        </section>
-
         <section class="chart-panel" data-chart-output></section>
-
-        @if ($song->notes)
-            <section class="notes-panel">
-                <h2>Team Notes</h2>
-                <p>{{ $song->notes }}</p>
-            </section>
-        @endif
     </section>
 
     @if (! file_exists(public_path('build/manifest.json')) && ! file_exists(public_path('hot')))

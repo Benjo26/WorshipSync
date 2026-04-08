@@ -139,3 +139,39 @@ const bootSongPlayer = (root) => {
 };
 
 document.querySelectorAll('[data-song-player]').forEach(bootSongPlayer);
+
+const extractChordProTag = (text, tag) => {
+    const match = text.match(new RegExp(`\\{${tag}\\s*:\\s*([^}]+)\\}`, 'i'));
+
+    return match ? match[1].trim() : '';
+};
+
+const bootChordProForm = (root) => {
+    const chordProInput = root.querySelector('[data-chordpro-input]');
+    const titleInput = root.querySelector('[data-song-title-input]');
+    const artistInput = root.querySelector('[data-song-artist-input]');
+
+    if (!chordProInput || !titleInput || !artistInput) {
+        return;
+    }
+
+    const syncMetadata = () => {
+        const chordPro = chordProInput.value;
+        const title = extractChordProTag(chordPro, 'title');
+        const artist = extractChordProTag(chordPro, 'artist');
+
+        if (title) {
+            titleInput.value = title;
+        }
+
+        if (artist) {
+            artistInput.value = artist;
+        }
+    };
+
+    chordProInput.addEventListener('input', syncMetadata);
+    chordProInput.addEventListener('blur', syncMetadata);
+    syncMetadata();
+};
+
+document.querySelectorAll('form').forEach(bootChordProForm);

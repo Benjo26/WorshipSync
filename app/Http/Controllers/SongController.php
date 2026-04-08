@@ -43,8 +43,8 @@ class SongController extends Controller
             'default_key' => $payload['default_key'],
             'bpm' => $payload['bpm'],
             'time_signature' => $payload['time_signature'],
-            'structure' => $payload['structure'],
-            'notes' => $payload['notes'] ?? null,
+            'structure' => [],
+            'notes' => null,
             'chart_path' => $chartPath,
         ]);
 
@@ -76,8 +76,8 @@ class SongController extends Controller
             'default_key' => $payload['default_key'],
             'bpm' => $payload['bpm'],
             'time_signature' => $payload['time_signature'],
-            'structure' => $payload['structure'],
-            'notes' => $payload['notes'] ?? null,
+            'structure' => [],
+            'notes' => null,
             'chart_path' => $chartPath,
         ]);
 

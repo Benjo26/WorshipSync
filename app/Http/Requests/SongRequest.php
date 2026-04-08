@@ -8,13 +8,7 @@ class SongRequest extends FormRequest
 {
     protected function prepareForValidation(): void
     {
-        $structure = array_values(array_filter(array_map(
-            static fn (?string $value) => trim((string) $value),
-            explode(',', (string) $this->input('structure_csv', ''))
-        )));
-
         $this->merge([
-            'structure' => $structure,
             'chordpro' => trim((string) $this->input('chordpro', '')),
         ]);
     }
@@ -32,9 +26,6 @@ class SongRequest extends FormRequest
             'default_key' => ['required', 'string', 'max:10'],
             'bpm' => ['required', 'integer', 'min:40', 'max:240'],
             'time_signature' => ['required', 'string', 'max:10'],
-            'notes' => ['nullable', 'string'],
-            'structure' => ['required', 'array', 'min:1'],
-            'structure.*' => ['required', 'string', 'max:50'],
             'chordpro' => ['required', 'string', 'min:3'],
         ];
     }
@@ -43,7 +34,6 @@ class SongRequest extends FormRequest
     {
         return [
             'chordpro.required' => 'Add the song chart in ChordPro format.',
-            'structure.min' => 'Add at least one section to the song structure.',
         ];
     }
 }
