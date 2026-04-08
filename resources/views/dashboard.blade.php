@@ -30,7 +30,14 @@
                 <p class="song-meta">{{ $song->artist ?: 'Unknown Artist' }}</p>
                 <h2>{{ $song->title }}</h2>
                 <p>{{ $song->default_key }} • {{ $song->bpm }} BPM • {{ $song->time_signature }}</p>
-                <a class="button ghost" href="{{ route('songs.player', $song) }}">Open Player</a>
+                <div class="inline-actions">
+                    <a class="button ghost" href="{{ route('songs.player', $song) }}">Open Player</a>
+                    <form method="POST" action="{{ route('songs.destroy', $song) }}" onsubmit="return confirm('Delete {{ addslashes($song->title) }}? This cannot be undone.');">
+                        @csrf
+                        @method('DELETE')
+                        <button class="button danger-outline" type="submit">Delete</button>
+                    </form>
+                </div>
             </article>
         @empty
             <article class="empty-card">

@@ -158,6 +158,16 @@ a {
     background: var(--warning);
 }
 
+.button.danger-outline {
+    background: transparent;
+    color: var(--warning);
+    border: 1px solid rgb(166 63 45 / 35%);
+}
+
+.button.danger-outline:hover {
+    background: rgb(166 63 45 / 8%);
+}
+
 .stats-grid,
 .song-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

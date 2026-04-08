@@ -19,6 +19,11 @@
             <div class="inline-actions">
                 <a class="button ghost" href="{{ route('songs.edit', $song) }}">Edit</a>
                 <a class="button subtle" href="{{ route('songs.index') }}">Back</a>
+                <form method="POST" action="{{ route('songs.destroy', $song) }}" onsubmit="return confirm('Delete {{ addslashes($song->title) }}? This cannot be undone.');">
+                    @csrf
+                    @method('DELETE')
+                    <button class="button danger-outline" type="submit">Delete</button>
+                </form>
             </div>
         </div>
 

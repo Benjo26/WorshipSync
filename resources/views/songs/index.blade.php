@@ -18,6 +18,11 @@
                 <div class="inline-actions">
                     <a class="button ghost" href="{{ route('songs.player', $song) }}">Player</a>
                     <a class="button subtle" href="{{ route('songs.edit', $song) }}">Edit</a>
+                    <form method="POST" action="{{ route('songs.destroy', $song) }}" onsubmit="return confirm('Delete {{ addslashes($song->title) }}? This cannot be undone.');">
+                        @csrf
+                        @method('DELETE')
+                        <button class="button danger-outline" type="submit">Delete</button>
+                    </form>
                 </div>
             </article>
         @endforeach
@@ -27,4 +32,3 @@
         {{ $songs->links() }}
     </div>
 @endsection
-
