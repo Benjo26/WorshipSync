@@ -8,485 +8,719 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'WorshipSync' }}</title>
-    @if ($hasViteBuild)
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <style>
-            :root {
-                --bg: #f4efe6;
-                --panel: rgba(255, 252, 247, 0.9);
-                --ink: #1a1713;
-                --muted: #6f6559;
-                --line: rgba(126, 104, 78, 0.18);
-                --accent: #18685a;
-                --accent-strong: #0f4d42;
-                --accent-soft: #dceee7;
-                --gold: #c8943d;
-                --warning: #a34130;
-                --shadow: 0 24px 60px rgba(39, 26, 14, 0.08);
+    <style>
+        :root {
+            --bg: #f5efe6;
+            --panel: rgba(255, 250, 244, 0.82);
+            --panel-strong: rgba(255, 252, 248, 0.95);
+            --ink: #171411;
+            --muted: #7a6f63;
+            --line: rgba(71, 55, 37, 0.12);
+            --accent: #0f5d50;
+            --accent-strong: #083d35;
+            --accent-soft: rgba(15, 93, 80, 0.08);
+            --gold: #c58f35;
+            --gold-soft: rgba(197, 143, 53, 0.18);
+            --warning: #a64434;
+            --shadow: 0 26px 80px rgba(39, 27, 15, 0.08);
+            --shadow-deep: 0 40px 100px rgba(22, 16, 11, 0.14);
+            --radius-xl: 34px;
+            --radius-lg: 26px;
+            --radius-md: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at 14% 10%, rgba(15, 93, 80, 0.2), transparent 24%),
+                radial-gradient(circle at 88% 14%, rgba(197, 143, 53, 0.16), transparent 22%),
+                linear-gradient(180deg, #fbf8f2 0%, var(--bg) 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
+            background-size: 62px 62px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 76%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1360px, calc(100% - 44px));
+            margin: 0 auto;
+            padding: 24px 0 72px;
+        }
+
+        .content {
+            display: grid;
+            gap: 30px;
+        }
+
+        .topbar,
+        .topnav,
+        .page-head,
+        .player-head,
+        .player-toolbar,
+        .inline-actions,
+        .hero-actions,
+        .toolbar-group,
+        .library-hero,
+        .section-head,
+        .library-hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .topbar,
+        .page-head,
+        .player-head,
+        .library-hero,
+        .section-head {
+            justify-content: space-between;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 18px;
+            z-index: 30;
+            margin-bottom: 28px;
+            padding: 18px 22px;
+            background: rgba(255, 251, 246, 0.74);
+            border: 1px solid rgba(71, 55, 37, 0.08);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 60%),
+                linear-gradient(135deg, var(--accent-strong), var(--accent));
+            color: #fff9f0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            box-shadow: 0 14px 30px rgba(15, 93, 80, 0.22);
+        }
+
+        .brand-text {
+            display: grid;
+            gap: 2px;
+        }
+
+        .brand-text strong {
+            font-size: 1.52rem;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-text small {
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.66rem;
+        }
+
+        .topnav a:not(.button) {
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.38fr) minmax(320px, 0.7fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .hero > div:first-child,
+        .library-hero,
+        .player-shell,
+        .feature-card,
+        .song-card,
+        .stat-card,
+        .panel,
+        .empty-card,
+        .flash,
+        .error-box,
+        .section-block {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero > div:first-child {
+            position: relative;
+            overflow: hidden;
+            padding: 46px;
+            background:
+                radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.12), transparent 24%),
+                linear-gradient(135deg, rgba(8, 58, 49, 0.99), rgba(15, 93, 80, 0.94) 56%, rgba(197, 143, 53, 0.9));
+            color: #fff8ef;
+            box-shadow: var(--shadow-deep);
+        }
+
+        .hero > div:first-child::before,
+        .library-hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+        }
+
+        .hero > div:first-child::before {
+            width: 360px;
+            height: 360px;
+            right: -88px;
+            top: -70px;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 64px rgba(255, 255, 255, 0.04);
+        }
+
+        .hero > div:first-child > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .library-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 30px 34px;
+            background:
+                linear-gradient(135deg, rgba(255, 252, 248, 0.96), rgba(244, 239, 230, 0.88));
+        }
+
+        .library-hero::after {
+            width: 240px;
+            height: 240px;
+            right: -80px;
+            top: -110px;
+            background: radial-gradient(circle, rgba(15, 93, 80, 0.12), transparent 70%);
+        }
+
+        .library-hero-copy,
+        .page-head > div {
+            max-width: 880px;
+        }
+
+        .hero h1,
+        .page-head h1,
+        .player-head h1,
+        .library-hero h1 {
+            margin: 10px 0 0;
+            font-size: clamp(3rem, 6vw, 5.8rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+
+        .section-head h2,
+        .feature-card h2,
+        .song-card h2,
+        .empty-card h2,
+        .studio-side h2 {
+            margin: 0;
+            font-size: 1.68rem;
+            line-height: 1.04;
+        }
+
+        .lead,
+        .section-lead,
+        .song-card p,
+        .feature-card li,
+        .empty-card p,
+        .player-head p,
+        .studio-side p {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .lead {
+            margin: 24px 0 0;
+            color: rgba(255, 248, 239, 0.88);
+            font-size: 1.1rem;
+        }
+
+        .section-lead {
+            margin: 14px 0 0;
+            max-width: 46rem;
+            font-size: 1.06rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .feature-card,
+        .song-card,
+        .stat-card,
+        .panel,
+        .empty-card,
+        .flash,
+        .error-box,
+        .section-block,
+        .player-shell {
+            padding: 26px;
+        }
+
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(247, 241, 232, 0.94));
+        }
+
+        .feature-card::before {
+            content: "Set Ready";
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(15, 93, 80, 0.08);
+            color: var(--accent-strong);
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 60%),
+                linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            box-shadow: 0 18px 34px rgba(15, 93, 80, 0.2);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 22px 42px rgba(15, 93, 80, 0.25);
+        }
+
+        .button.ghost {
+            background: rgba(255, 255, 255, 0.56);
+            color: var(--accent-strong);
+            border: 1px solid rgba(15, 93, 80, 0.16);
+            box-shadow: none;
+        }
+
+        .button.subtle {
+            background: rgba(232, 223, 209, 0.76);
+            color: var(--ink);
+            box-shadow: none;
+        }
+
+        .button.danger {
+            background: linear-gradient(135deg, #b55242, var(--warning));
+        }
+
+        .button.danger-outline {
+            background: transparent;
+            color: var(--warning);
+            border: 1px solid rgba(166, 68, 52, 0.24);
+            box-shadow: none;
+        }
+
+        .button.danger-outline:hover {
+            background: rgba(166, 68, 52, 0.08);
+        }
+
+        .stats-grid,
+        .song-grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            align-items: start;
+        }
+
+        .stat-card {
+            min-height: 176px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 237, 227, 0.88));
+        }
+
+        .stat-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        .stat-card strong {
+            display: block;
+            margin-top: 20px;
+            font-size: clamp(1.9rem, 3vw, 3.1rem);
+            line-height: 0.95;
+        }
+
+        .section-block {
+            display: grid;
+            gap: 20px;
+        }
+
+        .song-card {
+            display: grid;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            background:
+                linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+        }
+
+        .song-card::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            right: -38px;
+            bottom: -38px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(15, 93, 80, 0.12), transparent 70%);
+        }
+
+        .song-meta {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .song-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .song-tags span {
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: rgba(15, 93, 80, 0.08);
+            color: var(--accent-strong);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .empty-card {
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+            padding: 36px;
+            background:
+                linear-gradient(135deg, rgba(255, 252, 248, 0.98), rgba(245, 236, 221, 0.92));
+        }
+
+        .studio-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .studio-main {
+            display: grid;
+            gap: 22px;
+            padding: 30px;
+            background:
+                linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+        }
+
+        .studio-side {
+            position: sticky;
+            top: 112px;
+            display: grid;
+            gap: 18px;
+            padding: 30px;
+            background:
+                radial-gradient(circle at top right, rgba(241, 198, 120, 0.18), transparent 34%),
+                linear-gradient(180deg, rgba(8, 58, 49, 0.98), rgba(15, 93, 80, 0.92));
+            color: #fff8ef;
+            box-shadow: var(--shadow-deep);
+        }
+
+        .studio-side h2 {
+            font-size: 2.2rem;
+            line-height: 0.96;
+        }
+
+        .studio-side p {
+            margin: 0;
+            color: rgba(255, 248, 239, 0.82);
+        }
+
+        .side-note {
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .side-note span {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #f2c779;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 700;
+        }
+
+        .studio-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .metadata-grid label,
+        .chart-field {
+            display: grid;
+            gap: 10px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .chart-field {
+            gap: 12px;
+        }
+
+        .metadata-grid label span,
+        .chart-field span {
+            font-size: 0.96rem;
+            color: #51483f;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid rgba(71, 55, 37, 0.1);
+            border-radius: 22px;
+            padding: 16px 18px;
+            font: inherit;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.84);
+            transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+        }
+
+        input {
+            min-height: 60px;
+        }
+
+        textarea {
+            min-height: 540px;
+            resize: vertical;
+            line-height: 1.72;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: rgba(15, 93, 80, 0.34);
+            box-shadow: 0 0 0 5px rgba(15, 93, 80, 0.08);
+            background: rgba(255, 255, 255, 0.97);
+        }
+
+        small {
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .studio-actions,
+        .danger-zone {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .player-shell {
+            display: grid;
+            gap: 18px;
+        }
+
+        .player-toolbar,
+        .chart-panel {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.88);
+            padding: 18px;
+        }
+
+        .chart-panel {
+            display: grid;
+            gap: 18px;
+        }
+
+        .chart-section {
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(71, 55, 37, 0.1);
+        }
+
+        .chart-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .chart-lines {
+            display: grid;
+            gap: 12px;
+            white-space: pre-wrap;
+            font-size: 1.04rem;
+            line-height: 1.82;
+        }
+
+        .chord {
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+
+        .beat-indicator {
+            margin-left: auto;
+        }
+
+        .beat-indicator span {
+            display: inline-grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .pagination-wrap nav,
+        .pagination-wrap > div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .flash,
+        .error-box {
+            padding: 18px 24px;
+        }
+
+        .flash {
+            color: var(--accent-strong);
+            background: linear-gradient(180deg, rgba(220, 238, 231, 0.96), rgba(255, 252, 247, 0.92));
+        }
+
+        .error-box {
+            color: var(--warning);
+            background: linear-gradient(180deg, rgba(255, 242, 239, 0.96), rgba(255, 252, 247, 0.92));
+        }
+
+        .error-box ul,
+        .feature-card ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .studio-shell,
+            .hero {
+                grid-template-columns: 1fr;
             }
 
-            * {
-                box-sizing: border-box;
+            .studio-side {
+                position: static;
             }
+        }
 
-            html {
-                scroll-behavior: smooth;
-            }
-
-            body {
-                margin: 0;
-                min-height: 100vh;
-                color: var(--ink);
-                font-family: "Georgia", "Times New Roman", serif;
-                background:
-                    radial-gradient(circle at top left, rgba(24, 104, 90, 0.22), transparent 26%),
-                    radial-gradient(circle at bottom right, rgba(200, 148, 61, 0.18), transparent 28%),
-                    linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
-            }
-
-            body::before {
-                content: "";
-                position: fixed;
-                inset: 0;
-                pointer-events: none;
-                background-image:
-                    linear-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
-                background-size: 48px 48px;
-                mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent 70%);
-            }
-
-            a {
-                color: inherit;
-                text-decoration: none;
-            }
-
+        @media (max-width: 840px) {
             .shell {
-                width: min(1180px, calc(100% - 32px));
-                margin: 0 auto;
-                padding: 20px 0 64px;
+                width: min(100% - 24px, 100%);
             }
 
             .topbar,
-            .topnav,
             .page-head,
             .player-head,
             .player-toolbar,
-            .inline-actions,
-            .hero-actions,
-            .toolbar-group {
-                display: flex;
-                align-items: center;
-                gap: 14px;
+            .library-hero,
+            .section-head {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .topbar,
-            .page-head,
-            .player-head {
-                justify-content: space-between;
-            }
-
-            .topbar {
-                position: sticky;
-                top: 14px;
-                z-index: 20;
-                margin-bottom: 28px;
-                padding: 14px 18px;
-                background: rgba(255, 252, 247, 0.72);
-                border: 1px solid rgba(126, 104, 78, 0.14);
-                border-radius: 24px;
-                box-shadow: var(--shadow);
-                backdrop-filter: blur(16px);
-            }
-
-            .brand {
-                font-size: 1.45rem;
-                font-weight: 700;
-                letter-spacing: 0.03em;
-            }
-
-            .content {
-                display: grid;
-                gap: 24px;
-            }
-
-            .hero {
-                display: grid;
-                grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
-                gap: 24px;
-                align-items: stretch;
-            }
-
-            .hero > div:first-child {
-                position: relative;
-                overflow: hidden;
-                padding: 36px;
-                border-radius: 34px;
-                border: 1px solid var(--line);
-                background:
-                    linear-gradient(135deg, rgba(17, 71, 61, 0.96), rgba(29, 111, 95, 0.92) 56%, rgba(200, 148, 61, 0.9));
-                color: #fff9f0;
-                box-shadow: var(--shadow);
-            }
-
-            .hero > div:first-child::after {
-                content: "";
-                position: absolute;
-                width: 280px;
-                height: 280px;
-                border-radius: 999px;
-                right: -60px;
-                top: -60px;
-                background: rgba(255, 255, 255, 0.12);
-                box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.05);
-            }
-
-            .hero > div:first-child > * {
-                position: relative;
-                z-index: 1;
-            }
-
-            .hero h1,
-            .page-head h1,
-            .player-head h1 {
-                margin: 8px 0 0;
-                font-size: clamp(2.3rem, 4vw, 4.5rem);
-                line-height: 0.98;
-                letter-spacing: -0.03em;
-            }
-
-            .lead {
-                margin: 24px 0 0;
-                max-width: 760px;
-                color: rgba(255, 249, 240, 0.88);
-                font-size: 1.08rem;
-                line-height: 1.8;
-            }
-
-            .eyebrow {
-                margin: 0;
-                color: var(--gold);
-                text-transform: uppercase;
-                letter-spacing: 0.18em;
-                font-size: 0.74rem;
-                font-weight: 700;
-            }
-
-            .feature-card,
-            .song-card,
-            .stat-card,
-            .panel,
-            .player-shell,
-            .notes-panel,
-            .empty-card,
-            .flash,
-            .error-box {
-                background: var(--panel);
-                border: 1px solid var(--line);
-                border-radius: 28px;
-                box-shadow: var(--shadow);
-                backdrop-filter: blur(10px);
-            }
-
-            .feature-card,
-            .song-card,
-            .stat-card,
-            .empty-card,
-            .notes-panel,
-            .flash,
-            .error-box,
-            .panel,
-            .player-shell {
-                padding: 24px;
-            }
-
-            .feature-card {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .feature-card::before {
-                content: "Set Ready";
-                position: absolute;
-                top: 18px;
-                right: 18px;
-                padding: 8px 12px;
-                border-radius: 999px;
-                background: var(--accent-soft);
-                color: var(--accent-strong);
-                font-size: 0.75rem;
-                font-weight: 700;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-            }
-
-            .feature-card h2,
-            .song-card h2,
-            .notes-panel h2,
-            .empty-card h2 {
-                margin: 0 0 16px;
-                font-size: 1.6rem;
-            }
-
-            .feature-card ul,
-            .error-box ul {
-                margin: 0;
-                padding-left: 20px;
-            }
-
-            .feature-card li,
-            .song-card p,
-            .notes-panel p,
-            .empty-card p,
-            .song-meta {
-                color: var(--muted);
-                line-height: 1.7;
-            }
-
-            .button {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                border: none;
-                border-radius: 999px;
-                padding: 14px 22px;
-                background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-                color: #fff;
-                cursor: pointer;
-                font: inherit;
-                font-weight: 700;
-                letter-spacing: 0.01em;
-                box-shadow: 0 14px 32px rgba(24, 104, 90, 0.24);
-                transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-            }
-
-            .button:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 18px 38px rgba(24, 104, 90, 0.3);
-            }
-
-            .button.ghost {
-                background: transparent;
-                color: var(--accent-strong);
-                border: 1px solid rgba(24, 104, 90, 0.22);
-                box-shadow: none;
-            }
-
-            .button.subtle {
-                background: #ece3d6;
-                color: var(--ink);
-                box-shadow: none;
-            }
-
-            .button.danger {
-                background: linear-gradient(135deg, #b14c36, var(--warning));
-            }
-
-            .stats-grid,
-            .song-grid {
-                display: grid;
-                gap: 18px;
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            }
-
-            .stat-card {
-                background:
-                    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(246, 237, 223, 0.88));
-            }
-
-            .stat-card span {
-                display: block;
-                color: var(--muted);
-                font-size: 0.82rem;
-                text-transform: uppercase;
-                letter-spacing: 0.14em;
-            }
-
-            .stat-card strong {
-                display: block;
-                margin-top: 10px;
-                font-size: 2rem;
-            }
-
-            .song-card {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .song-card::after {
-                content: "";
-                position: absolute;
-                inset: auto -20px -20px auto;
-                width: 90px;
-                height: 90px;
-                border-radius: 999px;
-                background: radial-gradient(circle, rgba(24, 104, 90, 0.14), transparent 70%);
-            }
-
-            .song-meta {
-                margin-bottom: 6px;
-                font-size: 0.78rem;
-                text-transform: uppercase;
-                letter-spacing: 0.12em;
-            }
-
-            .form-grid {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 18px;
-            }
-
-            .form-grid label {
-                display: grid;
-                gap: 8px;
-                color: var(--muted);
-                font-weight: 600;
-            }
-
-            .form-grid .full {
-                grid-column: 1 / -1;
-            }
-
-            input,
-            textarea {
-                width: 100%;
-                border: 1px solid rgba(126, 104, 78, 0.16);
-                border-radius: 18px;
-                padding: 15px 16px;
-                font: inherit;
-                color: var(--ink);
-                background: rgba(255, 255, 255, 0.92);
-                transition: border-color 0.18s ease, box-shadow 0.18s ease;
-            }
-
-            input:focus,
-            textarea:focus {
-                outline: none;
-                border-color: rgba(24, 104, 90, 0.42);
-                box-shadow: 0 0 0 4px rgba(24, 104, 90, 0.09);
-            }
-
-            small {
-                color: var(--muted);
-                font-weight: 400;
-            }
-
-            .danger-zone {
-                display: flex;
-                justify-content: flex-end;
-            }
-
-            .player-shell {
-                display: grid;
-                gap: 18px;
-            }
-
-            .player-toolbar,
-            .structure-strip,
-            .chart-panel {
-                border: 1px solid var(--line);
-                border-radius: 22px;
-                background: rgba(255, 255, 255, 0.9);
-                padding: 18px;
-            }
-
-            .structure-strip {
-                display: flex;
+            .topnav {
                 flex-wrap: wrap;
-                gap: 10px;
             }
 
-            .structure-strip span {
-                padding: 10px 14px;
-                border-radius: 999px;
-                background: var(--accent-soft);
-                color: var(--accent-strong);
-                font-weight: 700;
+            .metadata-grid {
+                grid-template-columns: 1fr;
             }
 
-            .chart-panel {
-                display: grid;
-                gap: 18px;
+            .hero > div:first-child,
+            .library-hero,
+            .panel,
+            .song-card,
+            .feature-card,
+            .empty-card,
+            .studio-main,
+            .studio-side {
+                padding: 22px;
             }
-
-            .chart-section {
-                padding-bottom: 18px;
-                border-bottom: 1px solid #eee4d7;
-            }
-
-            .chart-section:last-child {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-
-            .chart-lines {
-                display: grid;
-                gap: 10px;
-                white-space: pre-wrap;
-                font-size: 1.02rem;
-            }
-
-            .chord {
-                color: var(--accent-strong);
-                font-weight: 700;
-            }
-
-            .beat-indicator {
-                margin-left: auto;
-            }
-
-            .beat-indicator span {
-                display: inline-grid;
-                place-items: center;
-                width: 44px;
-                height: 44px;
-                border-radius: 999px;
-                background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-                color: white;
-                font-weight: 700;
-            }
-
-            .pagination-wrap nav,
-            .pagination-wrap > div {
-                display: flex;
-                justify-content: center;
-            }
-
-            .flash {
-                color: var(--accent-strong);
-                background: linear-gradient(180deg, rgba(220, 238, 231, 0.96), rgba(255, 252, 247, 0.9));
-            }
-
-            .error-box {
-                color: var(--warning);
-                background: linear-gradient(180deg, rgba(255, 242, 239, 0.95), rgba(255, 252, 247, 0.9));
-            }
-
-            @media (max-width: 900px) {
-                .hero,
-                .form-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .topbar,
-                .page-head,
-                .player-head,
-                .player-toolbar {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .topnav {
-                    flex-wrap: wrap;
-                }
-
-                .hero > div:first-child {
-                    padding: 28px;
-                }
-            }
-        </style>
+        }
+    </style>
+    @if ($hasViteBuild)
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
 <body>

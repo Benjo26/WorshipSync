@@ -16,30 +16,30 @@
 
 <div class="studio-grid">
     <div class="metadata-grid">
-    <label>
-        <span>Song Title</span>
-        <input name="title" value="{{ old('title', $song?->title) }}" required data-song-title-input>
-    </label>
+        <label>
+            <span>Song Title</span>
+            <input name="title" value="{{ old('title', $song?->title) }}" required data-song-title-input placeholder="Pulled from {title: ...}">
+        </label>
 
-    <label>
-        <span>Artist</span>
-        <input name="artist" value="{{ old('artist', $song?->artist) }}" data-song-artist-input>
-    </label>
+        <label>
+            <span>Artist</span>
+            <input name="artist" value="{{ old('artist', $song?->artist) }}" data-song-artist-input placeholder="Pulled from {artist: ...}">
+        </label>
 
-    <label>
-        <span>Default Key</span>
-        <input name="default_key" value="{{ old('default_key', $song?->default_key ?? 'G') }}" required>
-    </label>
+        <label>
+            <span>Default Key</span>
+            <input name="default_key" value="{{ old('default_key', $song?->default_key ?? 'G') }}" required>
+        </label>
 
-    <label>
-        <span>BPM</span>
-        <input type="number" min="40" max="240" name="bpm" value="{{ old('bpm', $song?->bpm ?? 72) }}" required>
-    </label>
+        <label>
+            <span>BPM</span>
+            <input type="number" min="40" max="240" name="bpm" value="{{ old('bpm', $song?->bpm ?? 72) }}" required>
+        </label>
 
-    <label>
-        <span>Time Signature</span>
-        <input name="time_signature" value="{{ old('time_signature', $song?->time_signature ?? '4/4') }}" required>
-    </label>
+        <label>
+            <span>Time Signature</span>
+            <input name="time_signature" value="{{ old('time_signature', $song?->time_signature ?? '4/4') }}" required>
+        </label>
     </div>
 
     <label class="chart-field">

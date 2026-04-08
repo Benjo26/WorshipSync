@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="page-head">
-        <div>
+    <section class="library-hero">
+        <div class="library-hero-copy">
             <p class="eyebrow">New Song</p>
             <h1>Create Worship Song</h1>
             <p class="section-lead">
                 Drop in your ChordPro chart and shape a clean, player-ready song sheet in one pass.
             </p>
+        </div>
+        <div class="library-hero-actions">
+            <a class="button ghost" href="{{ route('songs.index') }}">Back to Library</a>
         </div>
     </section>
 
@@ -29,6 +32,10 @@
             <div class="side-note">
                 <span>Pro tip</span>
                 <p>Use tags like <code>{title: }</code>, <code>{artist: }</code>, and <code>{comment: Verse 1}</code> to keep charts clean and searchable.</p>
+            </div>
+            <div class="side-note">
+                <span>Live Feel</span>
+                <p>Keep your chart lyrical and readable. Short sections, clear tags, and clean chord spacing will feel better in the player.</p>
             </div>
         </aside>
     </form>
