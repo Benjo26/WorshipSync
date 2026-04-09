@@ -35,7 +35,6 @@ class SongController extends Controller
     public function store(SongRequest $request): RedirectResponse
     {
         $payload = $request->validated();
-        $chartPath = $this->chartStorage->store($payload['chordpro']);
 
         $song = Auth::user()->songs()->create([
             'title' => $payload['title'],
@@ -45,7 +44,8 @@ class SongController extends Controller
             'time_signature' => $payload['time_signature'],
             'structure' => [],
             'notes' => null,
-            'chart_path' => $chartPath,
+            'chordpro' => $payload['chordpro'],
+            'chart_path' => '',
         ]);
 
         return redirect()
@@ -59,7 +59,7 @@ class SongController extends Controller
 
         return view('songs.edit', [
             'song' => $song,
-            'chordPro' => $this->chartStorage->read($song->chart_path),
+            'chordPro' => $this->readChordPro($song),
         ]);
     }
 
@@ -68,7 +68,10 @@ class SongController extends Controller
         $this->authorizeSong($song);
 
         $payload = $request->validated();
-        $chartPath = $this->chartStorage->replace($song->chart_path, $payload['chordpro']);
+
+        if ($song->chart_path) {
+            $this->chartStorage->delete($song->chart_path);
+        }
 
         $song->update([
             'title' => $payload['title'],
@@ -78,7 +81,8 @@ class SongController extends Controller
             'time_signature' => $payload['time_signature'],
             'structure' => [],
             'notes' => null,
-            'chart_path' => $chartPath,
+            'chordpro' => $payload['chordpro'],
+            'chart_path' => '',
         ]);
 
         return redirect()
@@ -90,7 +94,10 @@ class SongController extends Controller
     {
         $this->authorizeSong($song);
 
-        $this->chartStorage->delete($song->chart_path);
+        if ($song->chart_path) {
+            $this->chartStorage->delete($song->chart_path);
+        }
+
         $song->delete();
 
         return redirect()
@@ -104,13 +111,26 @@ class SongController extends Controller
 
         return view('songs.player', [
             'song' => $song,
-            'chart' => $this->chordProParser->parse($this->chartStorage->read($song->chart_path)),
-            'chordPro' => $this->chartStorage->read($song->chart_path),
+            'chart' => $this->chordProParser->parse($this->readChordPro($song)),
+            'chordPro' => $this->readChordPro($song),
         ]);
     }
 
     private function authorizeSong(Song $song): void
     {
         abort_unless($song->user_id === Auth::id(), 403);
+    }
+
+    private function readChordPro(Song $song): string
+    {
+        if (filled($song->chordpro)) {
+            return $song->chordpro;
+        }
+
+        if (blank($song->chart_path)) {
+            return '';
+        }
+
+        return $this->chartStorage->read($song->chart_path);
     }
 }

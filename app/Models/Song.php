@@ -18,6 +18,7 @@ class Song extends Model
         'bpm',
         'time_signature',
         'structure',
+        'chordpro',
         'chart_path',
         'notes',
     ];
