@@ -4,9 +4,9 @@
     <section class="library-hero">
         <div class="library-hero-copy">
             <p class="eyebrow">New Song</p>
-            <h1>Create Worship Song</h1>
+            <h1>New Song</h1>
             <p class="section-lead">
-                Drop in your ChordPro chart and shape a clean, player-ready song sheet in one pass.
+                Paste your ChordPro chart and shape a player-ready song sheet in one pass.
             </p>
         </div>
         <div class="library-hero-actions">

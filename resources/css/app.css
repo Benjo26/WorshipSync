@@ -199,7 +199,7 @@ a {
 .library-hero {
     position: relative;
     overflow: hidden;
-    padding: 28px 32px;
+    padding: 26px 30px;
     background:
         linear-gradient(135deg, rgba(255, 252, 248, 0.95), rgba(244, 239, 230, 0.86));
 }
@@ -222,10 +222,11 @@ a {
 .page-head h1,
 .player-head h1,
 .library-hero h1 {
-    margin: 10px 0 0;
-    font-size: clamp(2.6rem, 6vw, 5.4rem);
-    line-height: 0.92;
-    letter-spacing: -0.05em;
+    margin: 8px 0 0;
+    max-width: 10ch;
+    font-size: clamp(2.35rem, 5vw, 4.6rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
 }
 
 .section-head h2,
@@ -233,8 +234,8 @@ a {
 .song-card h2,
 .empty-card h2 {
     margin: 0;
-    font-size: 1.6rem;
-    line-height: 1.04;
+    font-size: 1.4rem;
+    line-height: 1.08;
 }
 
 .lead,
@@ -254,17 +255,18 @@ a {
 }
 
 .section-lead {
-    margin: 12px 0 0;
-    max-width: 42rem;
-    font-size: 1.02rem;
+    margin: 10px 0 0;
+    max-width: 34rem;
+    font-size: 0.98rem;
+    line-height: 1.62;
 }
 
 .eyebrow {
     margin: 0;
     color: var(--gold);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
     font-weight: 700;
 }
 
@@ -277,7 +279,7 @@ a {
 .error-box,
 .section-block,
 .player-shell {
-    padding: 24px;
+    padding: 22px;
 }
 
 .feature-card {
@@ -308,7 +310,7 @@ a {
     gap: 10px;
     border: none;
     border-radius: 999px;
-    padding: 14px 22px;
+    padding: 13px 20px;
     background: linear-gradient(135deg, var(--accent), var(--accent-strong));
     color: #fff;
     cursor: pointer;
@@ -355,13 +357,13 @@ a {
 .stats-grid,
 .song-grid {
     display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     align-items: start;
 }
 
 .stat-card {
-    min-height: 168px;
+    min-height: 148px;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 237, 227, 0.88));
 }
@@ -376,22 +378,24 @@ a {
 
 .stat-card strong {
     display: block;
-    margin-top: 18px;
-    font-size: clamp(1.8rem, 3vw, 3rem);
-    line-height: 0.96;
+    margin-top: 14px;
+    max-width: 12ch;
+    font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
 .section-block {
     display: grid;
-    gap: 20px;
+    gap: 16px;
 }
 
 .song-card {
     display: grid;
-    gap: 14px;
+    gap: 12px;
     position: relative;
     overflow: hidden;
-    min-height: 220px;
+    min-height: 190px;
     background:
         linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
 }
@@ -410,9 +414,9 @@ a {
 .song-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
 }
 
 .song-tags {
@@ -422,21 +426,21 @@ a {
 }
 
 .song-tags span {
-    padding: 9px 12px;
+    padding: 8px 11px;
     border-radius: 999px;
     background: rgba(17, 92, 79, 0.08);
     color: var(--accent-strong);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
 }
 
 .empty-card {
-    min-height: 260px;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 14px;
-    padding: 34px;
+    gap: 12px;
+    padding: 30px;
     background:
         linear-gradient(135deg, rgba(255, 252, 248, 0.98), rgba(245, 236, 221, 0.92));
 }
@@ -456,7 +460,7 @@ a {
 .studio-main {
     display: grid;
     gap: 18px;
-    padding: 24px;
+    padding: 22px;
     background:
         linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(247, 241, 232, 0.92));
 }
@@ -480,12 +484,18 @@ a {
     font-weight: 600;
 }
 
+.metadata-grid label span,
+.chart-field span {
+    font-size: 0.92rem;
+    color: #51483f;
+}
+
 input,
 textarea {
     width: 100%;
     border: 1px solid rgba(84, 65, 43, 0.12);
-    border-radius: 20px;
-    padding: 15px 16px;
+    border-radius: 18px;
+    padding: 14px 15px;
     font: inherit;
     color: var(--ink);
     background: rgba(255, 255, 255, 0.78);
@@ -493,7 +503,7 @@ textarea {
 }
 
 textarea {
-    min-height: 440px;
+    min-height: 340px;
     resize: vertical;
 }
 
@@ -508,6 +518,8 @@ textarea:focus {
 small {
     color: var(--muted);
     font-weight: 400;
+    font-size: 0.88rem;
+    line-height: 1.55;
 }
 
 .studio-actions,

@@ -4,9 +4,9 @@
     <section class="library-hero">
         <div class="library-hero-copy">
             <p class="eyebrow">Dashboard</p>
-            <h1>Your worship library</h1>
+            <h1>Library</h1>
             <p class="section-lead">
-                Keep your chord charts, keys, and rehearsal flow in one polished space built for fast prep and calm Sunday mornings.
+                Your team’s songs, keys, and rehearsal-ready charts in one calm workspace.
             </p>
         </div>
         <div class="library-hero-actions">
@@ -16,15 +16,15 @@
 
     <section class="stats-grid">
         <article class="stat-card">
-            <span>Total Songs</span>
+            <span>Songs</span>
             <strong>{{ $songCount }}</strong>
         </article>
         <article class="stat-card">
-            <span>Latest BPM Range</span>
+            <span>Tempo</span>
             <strong>{{ $averageBpm ? round($averageBpm) . ' avg' : 'No songs yet' }}</strong>
         </article>
         <article class="stat-card">
-            <span>Default Flow</span>
+            <span>Set Flow</span>
             <strong>Verse / Chorus / Bridge</strong>
         </article>
     </section>
@@ -32,8 +32,8 @@
     <section class="section-block">
         <div class="section-head">
             <div>
-                <p class="eyebrow">Recent Charts</p>
-                <h2>Library Snapshot</h2>
+                <p class="eyebrow">Recent</p>
+                <h2>Latest Songs</h2>
             </div>
         </div>
 
@@ -58,9 +58,9 @@
             </article>
         @empty
             <article class="empty-card">
-                <p class="eyebrow">Fresh Start</p>
+                <p class="eyebrow">Start Here</p>
                 <h2>No songs yet</h2>
-                <p>Create your first ChordPro chart and start building a set-ready library for your team.</p>
+                <p>Add your first ChordPro chart and build a cleaner song library for your team.</p>
                 <a class="button" href="{{ route('songs.create') }}">Create Song</a>
             </article>
         @endforelse

@@ -4,9 +4,9 @@
     <section class="library-hero">
         <div class="library-hero-copy">
             <p class="eyebrow">Songs</p>
-            <h1>Song Library</h1>
+            <h1>Songs</h1>
             <p class="section-lead">
-                Browse, edit, and open every chart from one premium rehearsal view.
+                Browse, edit, and open every chart from one refined rehearsal view.
             </p>
         </div>
         <div class="library-hero-actions">
@@ -17,7 +17,7 @@
     <section class="section-block">
         <div class="section-head">
             <div>
-                <p class="eyebrow">All Charts</p>
+                <p class="eyebrow">Library</p>
                 <h2>Your Songs</h2>
             </div>
         </div>
@@ -44,9 +44,9 @@
             </article>
         @empty
             <article class="empty-card">
-                <p class="eyebrow">Curate Your First Chart</p>
+                <p class="eyebrow">Ready To Start</p>
                 <h2>Your library is ready.</h2>
-                <p>Start with one ChordPro song and turn this into a refined archive for your worship team.</p>
+                <p>Start with one ChordPro song and shape a clean archive for your worship team.</p>
                 <a class="button" href="{{ route('songs.create') }}">Create Song</a>
             </article>
         @endforelse

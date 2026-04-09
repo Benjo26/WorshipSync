@@ -242,10 +242,11 @@
         .page-head h1,
         .player-head h1,
         .library-hero h1 {
-            margin: 10px 0 0;
-            font-size: clamp(3rem, 6vw, 5.8rem);
+            margin: 8px 0 0;
+            max-width: 10ch;
+            font-size: clamp(2.35rem, 5vw, 4.8rem);
             line-height: 0.9;
-            letter-spacing: -0.06em;
+            letter-spacing: -0.055em;
         }
 
         .section-head h2,
@@ -254,8 +255,8 @@
         .empty-card h2,
         .studio-side h2 {
             margin: 0;
-            font-size: 1.68rem;
-            line-height: 1.04;
+            font-size: 1.42rem;
+            line-height: 1.08;
         }
 
         .lead,
@@ -276,17 +277,18 @@
         }
 
         .section-lead {
-            margin: 14px 0 0;
-            max-width: 46rem;
-            font-size: 1.06rem;
+            margin: 10px 0 0;
+            max-width: 34rem;
+            font-size: 0.98rem;
+            line-height: 1.62;
         }
 
         .eyebrow {
             margin: 0;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 0.18em;
-            font-size: 0.76rem;
+            letter-spacing: 0.2em;
+            font-size: 0.72rem;
             font-weight: 700;
         }
 
@@ -299,7 +301,7 @@
         .error-box,
         .section-block,
         .player-shell {
-            padding: 26px;
+            padding: 22px;
         }
 
         .feature-card {
@@ -331,7 +333,7 @@
             gap: 10px;
             border: none;
             border-radius: 999px;
-            padding: 14px 24px;
+            padding: 13px 20px;
             background:
                 linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 60%),
                 linear-gradient(135deg, var(--accent), var(--accent-strong));
@@ -380,13 +382,13 @@
         .stats-grid,
         .song-grid {
             display: grid;
-            gap: 18px;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             align-items: start;
         }
 
         .stat-card {
-            min-height: 176px;
+            min-height: 148px;
             background:
                 linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 237, 227, 0.88));
         }
@@ -401,22 +403,24 @@
 
         .stat-card strong {
             display: block;
-            margin-top: 20px;
-            font-size: clamp(1.9rem, 3vw, 3.1rem);
-            line-height: 0.95;
+            margin-top: 14px;
+            max-width: 12ch;
+            font-size: clamp(1.65rem, 2.5vw, 2.5rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
         }
 
         .section-block {
             display: grid;
-            gap: 20px;
+            gap: 16px;
         }
 
         .song-card {
             display: grid;
-            gap: 14px;
+            gap: 12px;
             position: relative;
             overflow: hidden;
-            min-height: 220px;
+            min-height: 190px;
             background:
                 linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
         }
@@ -435,9 +439,9 @@
         .song-meta {
             margin: 0;
             color: var(--muted);
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.18em;
         }
 
         .song-tags {
@@ -447,21 +451,21 @@
         }
 
         .song-tags span {
-            padding: 9px 12px;
+            padding: 8px 11px;
             border-radius: 999px;
             background: rgba(15, 93, 80, 0.08);
             color: var(--accent-strong);
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 700;
         }
 
         .empty-card {
-            min-height: 280px;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 14px;
-            padding: 36px;
+            gap: 12px;
+            padding: 30px;
             background:
                 linear-gradient(135deg, rgba(255, 252, 248, 0.98), rgba(245, 236, 221, 0.92));
         }
@@ -481,7 +485,7 @@
             .studio-main {
                 display: grid;
                 gap: 22px;
-                padding: 30px;
+                padding: 22px;
                 background:
                     linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
             }
@@ -511,7 +515,7 @@
 
         .metadata-grid label span,
         .chart-field span {
-            font-size: 0.96rem;
+            font-size: 0.92rem;
             color: #51483f;
         }
 
@@ -519,8 +523,8 @@
         textarea {
             width: 100%;
             border: 1px solid rgba(71, 55, 37, 0.1);
-            border-radius: 22px;
-            padding: 16px 18px;
+            border-radius: 18px;
+            padding: 14px 15px;
             font: inherit;
             color: var(--ink);
             background: rgba(255, 255, 255, 0.84);
@@ -528,11 +532,11 @@
         }
 
         input {
-            min-height: 60px;
+            min-height: 54px;
         }
 
         textarea {
-            min-height: 540px;
+            min-height: 340px;
             resize: vertical;
             line-height: 1.72;
             font-size: 1rem;
@@ -549,6 +553,8 @@
         small {
             color: var(--muted);
             font-weight: 400;
+            font-size: 0.88rem;
+            line-height: 1.55;
         }
 
         .studio-actions,
