@@ -478,11 +478,6 @@
             font-weight: 700;
         }
 
-        .song-card .inline-actions form,
-        .player-head .inline-actions form {
-            margin: 0;
-        }
-
         .empty-card {
             min-height: 220px;
             display: flex;
@@ -757,23 +752,19 @@
 
                 .topnav {
                     width: 100%;
-                    flex-wrap: nowrap;
-                    gap: 8px;
-                    overflow-x: auto;
-                    padding-bottom: 4px;
+                    flex-wrap: wrap;
+                    gap: 10px;
                 }
 
                 .topnav a,
                 .topnav form {
-                    width: auto;
-                    flex: 0 0 auto;
+                    width: 100%;
                 }
 
                 .topnav .button,
                 .topnav a:not(.button) {
-                    width: auto;
+                    width: 100%;
                     justify-content: center;
-                    white-space: nowrap;
                 }
 
                 .metadata-grid {
@@ -805,6 +796,15 @@
                     margin-bottom: 14px;
                 }
 
+                .button,
+                .inline-actions .button,
+                .hero-actions .button,
+                .library-hero-actions .button,
+                .studio-actions .button,
+                .danger-zone .button {
+                    width: 100%;
+                }
+
                 .inline-actions,
                 .hero-actions,
                 .library-hero-actions,
@@ -817,109 +817,14 @@
                     align-items: stretch;
                 }
 
-                .library-hero-actions .button,
-                .studio-actions .button,
-                .danger-zone .button {
-                    width: 100%;
-                }
-
-                .song-card .song-tags {
-                    display: grid;
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                .song-tags {
                     gap: 8px;
                 }
 
-                .song-card .song-tags span {
+                .song-tags span {
                     width: 100%;
                     justify-content: center;
                     text-align: center;
-                    min-height: 40px;
-                    align-items: center;
-                    padding: 8px 10px;
-                }
-
-                .song-card .inline-actions {
-                    display: grid;
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: 10px;
-                }
-
-                .song-card .inline-actions > * {
-                    min-width: 0;
-                }
-
-                .song-card .inline-actions form {
-                    grid-column: 1 / -1;
-                }
-
-                .song-card .inline-actions .button,
-                .song-card .inline-actions form .button {
-                    width: 100%;
-                    min-height: 46px;
-                }
-
-                .player-head .inline-actions {
-                    display: grid;
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: 10px;
-                }
-
-                .player-head .inline-actions form {
-                    grid-column: 1 / -1;
-                }
-
-                .player-head .inline-actions .button,
-                .player-head .inline-actions form .button {
-                    width: 100%;
-                    min-height: 48px;
-                }
-
-                .player-toolbar {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: 12px;
-                    padding: 14px;
-                }
-
-                .toolbar-group {
-                    display: grid;
-                    gap: 10px;
-                    padding: 14px;
-                    border-radius: 18px;
-                    background: rgba(246, 240, 230, 0.82);
-                    border: 1px solid rgba(84, 65, 43, 0.08);
-                }
-
-                .toolbar-group span:first-child {
-                    font-size: 0.8rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.14em;
-                    color: var(--muted);
-                    font-weight: 700;
-                }
-
-                .toolbar-group strong {
-                    font-size: 1.5rem;
-                    letter-spacing: -0.04em;
-                    font-family: var(--font-display);
-                }
-
-                .toolbar-group .button {
-                    width: 100%;
-                    min-height: 48px;
-                }
-
-                .beat-indicator {
-                    margin-left: 0;
-                }
-
-                .beat-indicator span {
-                    width: 54px;
-                    height: 54px;
-                }
-
-                .chart-panel {
-                    padding: 14px;
                 }
 
                 .hero > div:first-child,
@@ -998,57 +903,12 @@
                 }
 
                 .button {
-                    padding: 12px 16px;
-                    border-radius: 18px;
+                    padding: 13px 18px;
                 }
 
                 .chart-lines {
                     font-size: 0.96rem;
                     line-height: 1.65;
-                }
-
-                .song-card {
-                    min-height: 0;
-                }
-
-                .song-card h2 {
-                    font-size: 1.1rem;
-                    line-height: 1.12;
-                }
-
-                .song-card .song-meta {
-                    font-size: 0.68rem;
-                    letter-spacing: 0.16em;
-                }
-
-                .song-card .song-tags {
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                }
-
-                .song-card .song-tags span {
-                    font-size: 0.74rem;
-                    border-radius: 14px;
-                }
-
-                .song-card .inline-actions {
-                    grid-template-columns: 1fr;
-                }
-
-                .player-head .inline-actions {
-                    grid-template-columns: 1fr;
-                }
-
-                .toolbar-group {
-                    padding: 12px;
-                }
-
-                .toolbar-group strong {
-                    font-size: 1.32rem;
-                }
-
-                .player-toolbar,
-                .chart-panel {
-                    border-radius: 18px;
                 }
 
                 .measure {
