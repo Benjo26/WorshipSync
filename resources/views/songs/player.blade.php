@@ -106,7 +106,7 @@
                 let metronomeTimer = null;
                 let beat = 0;
                 const tapHistory = [];
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                let audioContext = null;
 
                 const chartOutput = root.querySelector('[data-chart-output]');
                 const currentKey = root.querySelector('[data-current-key]');
@@ -115,6 +115,13 @@
                 const toggle = root.querySelector('[data-metronome-toggle]');
 
                 const render = () => {
+                    if (!chart.sections.length) {
+                        chartOutput.innerHTML = '<article class="chart-section chart-empty-state"><p>No chart lines were found for this song yet.</p></article>';
+                        currentKey.textContent = transposeChord(defaultKey, transpose);
+                        bpmDisplay.textContent = bpm;
+                        return;
+                    }
+
                     chartOutput.innerHTML = chart.sections.map((section) => `
                         <article class="chart-section">
                             <h2>${section.name}</h2>
@@ -143,6 +150,10 @@
                     beat = (beat % beatsPerBar) + 1;
                     beatIndicator.textContent = String(beat);
 
+                    if (!audioContext) {
+                        return;
+                    }
+
                     const oscillator = audioContext.createOscillator();
                     const gain = audioContext.createGain();
                     oscillator.frequency.value = beat === 1 ? 920 : 680;
@@ -154,6 +165,15 @@
                 };
 
                 const startMetronome = async () => {
+                    if (!audioContext && (window.AudioContext || window.webkitAudioContext)) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    }
+
+                    if (!audioContext) {
+                        toggle.textContent = 'Audio unavailable';
+                        return;
+                    }
+
                     if (audioContext.state === 'suspended') {
                         await audioContext.resume();
                     }

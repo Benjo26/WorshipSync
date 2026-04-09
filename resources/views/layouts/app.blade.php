@@ -615,6 +615,12 @@
             border-bottom: 1px solid rgba(71, 55, 37, 0.1);
         }
 
+        .chart-empty-state {
+            padding: 28px 0 8px;
+            border-bottom: none;
+            color: var(--muted);
+        }
+
         .chart-section:last-child {
             border-bottom: none;
             padding-bottom: 0;
