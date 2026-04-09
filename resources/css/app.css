@@ -416,6 +416,14 @@ a {
 .section-block {
     display: grid;
     gap: 16px;
+    background:
+        linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(246, 240, 231, 0.92));
+    border: 1px solid rgba(76, 58, 36, 0.08);
+}
+
+.section-head {
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(76, 58, 36, 0.08);
 }
 
 .song-card {
@@ -426,6 +434,12 @@ a {
     min-height: 176px;
     background:
         linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+}
+
+.song-card h2,
+.empty-card h2,
+.stat-card strong {
+    text-wrap: balance;
 }
 
 .song-card::after {
@@ -497,6 +511,10 @@ a {
     padding: 22px;
     background:
         linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(247, 241, 232, 0.92));
+}
+
+.studio-main .button {
+    min-width: 160px;
 }
 
 .studio-grid {

@@ -224,17 +224,17 @@
         .library-hero {
             position: relative;
             overflow: hidden;
-            padding: 30px 34px;
+            padding: 24px 28px;
             background:
-                linear-gradient(135deg, rgba(255, 252, 248, 0.96), rgba(244, 239, 230, 0.88));
+                linear-gradient(180deg, rgba(255, 253, 249, 0.95), rgba(248, 243, 235, 0.88));
         }
 
         .library-hero::after {
-            width: 240px;
-            height: 240px;
-            right: -80px;
-            top: -110px;
-            background: radial-gradient(circle, rgba(15, 93, 80, 0.12), transparent 70%);
+            width: 180px;
+            height: 180px;
+            right: -40px;
+            top: -70px;
+            background: radial-gradient(circle, rgba(15, 93, 80, 0.08), transparent 72%);
         }
 
         .library-hero-copy,
@@ -357,15 +357,15 @@
         }
 
         .button.ghost {
-            background: rgba(255, 255, 255, 0.56);
+            background: rgba(255, 255, 255, 0.72);
             color: var(--accent-strong);
-            border: 1px solid rgba(15, 93, 80, 0.16);
+            border: 1px solid rgba(15, 93, 80, 0.12);
             box-shadow: none;
         }
 
         .button.subtle {
-            background: rgba(232, 223, 209, 0.76);
-            color: var(--ink);
+            background: rgba(246, 240, 230, 0.86);
+            color: var(--muted);
             box-shadow: none;
         }
 
@@ -418,6 +418,14 @@
         .section-block {
             display: grid;
             gap: 16px;
+            background:
+                linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(246, 240, 231, 0.92));
+            border: 1px solid rgba(76, 58, 36, 0.08);
+        }
+
+        .section-head {
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(76, 58, 36, 0.08);
         }
 
         .song-card {
@@ -428,6 +436,12 @@
             min-height: 190px;
             background:
                 linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+        }
+
+        .song-card h2,
+        .empty-card h2,
+        .stat-card strong {
+            text-wrap: balance;
         }
 
         .song-card::after {
@@ -475,6 +489,12 @@
                 linear-gradient(135deg, rgba(255, 252, 248, 0.98), rgba(245, 236, 221, 0.92));
         }
 
+        .empty-card .button {
+            width: auto;
+            min-width: 180px;
+            align-self: flex-start;
+        }
+
             .studio-shell {
                 display: grid;
                 grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
@@ -483,7 +503,7 @@
             }
 
             .studio-shell-single {
-                grid-template-columns: minmax(0, 980px);
+                grid-template-columns: minmax(0, 920px);
                 justify-content: start;
             }
 
@@ -494,6 +514,10 @@
                 background:
                     linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
             }
+
+        .studio-main .button {
+            min-width: 160px;
+        }
 
         .studio-grid {
             display: grid;
