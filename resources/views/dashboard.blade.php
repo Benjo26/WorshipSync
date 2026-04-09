@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="library-hero">
+    <section class="library-hero hero-premium">
         <div class="library-hero-copy">
             <p class="eyebrow">Dashboard</p>
             <h1>Library</h1>

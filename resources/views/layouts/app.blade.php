@@ -10,23 +10,25 @@
     <title>{{ $title ?? 'WorshipSync' }}</title>
     <style>
         :root {
-            --bg: #f5efe6;
-            --panel: rgba(255, 250, 244, 0.82);
-            --panel-strong: rgba(255, 252, 248, 0.95);
-            --ink: #171411;
-            --muted: #7a6f63;
-            --line: rgba(71, 55, 37, 0.12);
-            --accent: #0f5d50;
-            --accent-strong: #083d35;
-            --accent-soft: rgba(15, 93, 80, 0.08);
-            --gold: #c58f35;
+            --bg: #efe8db;
+            --panel: rgba(255, 252, 247, 0.78);
+            --panel-strong: rgba(255, 253, 249, 0.96);
+            --ink: #16120f;
+            --muted: #706558;
+            --line: rgba(76, 58, 36, 0.1);
+            --accent: #0f5a4d;
+            --accent-strong: #083a33;
+            --accent-soft: rgba(15, 90, 77, 0.08);
+            --gold: #b9852f;
             --gold-soft: rgba(197, 143, 53, 0.18);
             --warning: #a64434;
-            --shadow: 0 26px 80px rgba(39, 27, 15, 0.08);
+            --shadow: 0 22px 60px rgba(34, 25, 15, 0.07);
             --shadow-deep: 0 40px 100px rgba(22, 16, 11, 0.14);
             --radius-xl: 34px;
             --radius-lg: 26px;
             --radius-md: 20px;
+            --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+            --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
         }
 
         * {
@@ -41,11 +43,11 @@
             margin: 0;
             min-height: 100vh;
             color: var(--ink);
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: var(--font-body);
             background:
-                radial-gradient(circle at 14% 10%, rgba(15, 93, 80, 0.2), transparent 24%),
-                radial-gradient(circle at 88% 14%, rgba(197, 143, 53, 0.16), transparent 22%),
-                linear-gradient(180deg, #fbf8f2 0%, var(--bg) 100%);
+                radial-gradient(circle at 8% 10%, rgba(15, 90, 77, 0.18), transparent 24%),
+                radial-gradient(circle at 92% 16%, rgba(185, 133, 47, 0.14), transparent 22%),
+                linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
         }
 
         body::before {
@@ -106,11 +108,12 @@
             top: 18px;
             z-index: 30;
             margin-bottom: 28px;
-            padding: 18px 22px;
-            background: rgba(255, 251, 246, 0.74);
-            border: 1px solid rgba(71, 55, 37, 0.08);
+            padding: 14px 16px;
+            background:
+                linear-gradient(180deg, rgba(14, 33, 31, 0.95), rgba(20, 47, 41, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-xl);
-            box-shadow: var(--shadow);
+            box-shadow: 0 26px 70px rgba(13, 19, 18, 0.26);
             backdrop-filter: blur(18px);
         }
 
@@ -128,7 +131,7 @@
             border-radius: 18px;
             background:
                 linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 60%),
-                linear-gradient(135deg, var(--accent-strong), var(--accent));
+                linear-gradient(135deg, #0d6959, #0a3e36);
             color: #fff9f0;
             font-size: 0.95rem;
             font-weight: 700;
@@ -144,18 +147,20 @@
         .brand-text strong {
             font-size: 1.52rem;
             line-height: 1;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
+            color: #fffaf3;
+            font-family: var(--font-display);
         }
 
         .brand-text small {
-            color: var(--muted);
+            color: rgba(245, 236, 225, 0.62);
             text-transform: uppercase;
             letter-spacing: 0.16em;
             font-size: 0.66rem;
         }
 
         .topnav a:not(.button) {
-            color: var(--muted);
+            color: rgba(245, 236, 225, 0.78);
             font-weight: 600;
         }
 
