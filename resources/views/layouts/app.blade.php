@@ -1071,16 +1071,17 @@
                 }
 
                 .player-head {
-                    gap: 12px;
+                    gap: 10px;
                 }
 
                 .player-head h1 {
-                    font-size: clamp(1.7rem, 9vw, 2.35rem);
-                    line-height: 0.98;
+                    font-size: clamp(1.45rem, 7.8vw, 1.95rem);
+                    line-height: 1;
+                    letter-spacing: -0.05em;
                 }
 
                 .player-head p {
-                    font-size: 0.95rem;
+                    font-size: 0.9rem;
                 }
 
                 .section-head h2,
@@ -1095,7 +1096,7 @@
                 }
 
                 .button {
-                    padding: 13px 18px;
+                    padding: 11px 16px;
                 }
 
                 .topnav {
@@ -1110,34 +1111,62 @@
 
                 .player-head .inline-actions {
                     grid-template-columns: 1fr;
+                    gap: 8px;
+                }
+
+                .player-head .inline-actions .button,
+                .player-head .inline-actions form .button {
+                    min-height: 42px;
+                    font-size: 0.98rem;
                 }
 
                 .player-toolbar {
-                    padding: 10px;
+                    padding: 8px;
+                    gap: 8px;
                 }
 
                 .control-card {
-                    padding: 10px;
-                    border-radius: 14px;
+                    padding: 8px 10px;
+                    border-radius: 12px;
                 }
 
                 .control-label {
-                    font-size: 0.68rem;
-                    letter-spacing: 0.12em;
+                    font-size: 0.64rem;
+                    letter-spacing: 0.1em;
                 }
 
                 .control-cluster {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    align-items: center;
                 }
 
                 .control-cluster .button,
                 .control-cluster strong {
-                    min-height: 44px;
+                    min-height: 38px;
+                    font-size: 0.96rem;
+                    padding: 0 10px;
                 }
 
                 .tempo-readout,
                 .control-value {
-                    font-size: 1.08rem;
+                    font-size: 0.95rem;
+                }
+
+                .control-button {
+                    min-width: 36px;
+                    min-height: 36px;
+                    padding: 0 10px;
+                }
+
+                .beat-indicator {
+                    padding: 8px 10px;
+                    gap: 8px;
+                }
+
+                .beat-indicator span {
+                    width: 36px;
+                    height: 36px;
+                    font-size: 0.95rem;
                 }
 
                 .chart-lines {
