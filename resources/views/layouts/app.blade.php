@@ -624,7 +624,7 @@
 
         .player-shell {
             display: grid;
-            gap: 18px;
+            gap: 14px;
         }
 
         .player-toolbar,
@@ -632,24 +632,24 @@
             border: 1px solid var(--line);
             border-radius: var(--radius-lg);
             background: rgba(255, 255, 255, 0.88);
-            padding: 18px;
+            padding: 14px;
         }
 
         .player-toolbar {
             display: grid;
             grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr) 110px;
-            gap: 14px;
+            gap: 10px;
             align-items: stretch;
         }
 
         .toolbar-group {
             display: grid;
-            gap: 12px;
+            gap: 8px;
         }
 
         .control-card {
-            padding: 16px 18px;
-            border-radius: 18px;
+            padding: 12px 14px;
+            border-radius: 16px;
             background: rgba(246, 240, 230, 0.8);
             border: 1px solid rgba(71, 55, 37, 0.08);
         }
@@ -666,28 +666,28 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .control-button {
-            min-width: 56px;
+            min-width: 46px;
         }
 
         .control-value,
         .tempo-readout {
             font-family: var(--font-display);
-            font-size: 1.55rem;
+            font-size: 1.3rem;
             line-height: 1;
             letter-spacing: -0.04em;
         }
 
         .chart-panel {
             display: grid;
-            gap: 18px;
+            gap: 14px;
         }
 
         .chart-section {
-            padding-bottom: 18px;
+            padding-bottom: 14px;
             border-bottom: 1px solid rgba(71, 55, 37, 0.1);
         }
 
@@ -704,25 +704,25 @@
 
             .chart-lines {
                 display: grid;
-                gap: 12px;
+                gap: 10px;
                 white-space: pre-wrap;
-                font-size: 1.04rem;
-                line-height: 1.82;
+                font-size: 0.98rem;
+                line-height: 1.65;
             }
 
             .measure-line {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 8px;
             }
 
             .measure {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                min-width: 72px;
-                padding: 8px 14px;
-                border-radius: 14px;
+                min-width: 58px;
+                padding: 7px 11px;
+                border-radius: 12px;
                 background: rgba(15, 93, 80, 0.08);
                 border: 1px solid rgba(15, 93, 80, 0.12);
                 color: var(--accent-strong);
@@ -742,8 +742,8 @@
         .beat-indicator span {
             display: inline-grid;
             place-items: center;
-            width: 54px;
-            height: 54px;
+            width: 46px;
+            height: 46px;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--accent), var(--accent-strong));
             color: #fff;

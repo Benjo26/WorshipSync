@@ -14,21 +14,6 @@
         </div>
     </section>
 
-    <section class="stats-grid">
-        <article class="stat-card">
-            <span>Songs</span>
-            <strong>{{ $songCount }}</strong>
-        </article>
-        <article class="stat-card">
-            <span>Tempo</span>
-            <strong>{{ $averageBpm ? round($averageBpm) . ' avg' : 'No songs yet' }}</strong>
-        </article>
-        <article class="stat-card">
-            <span>Set Flow</span>
-            <strong>Verse / Chorus / Bridge</strong>
-        </article>
-    </section>
-
     <section class="section-block">
         <div class="section-head">
             <div>
