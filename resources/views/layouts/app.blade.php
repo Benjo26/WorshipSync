@@ -889,23 +889,26 @@
                     letter-spacing: 0.1em;
                 }
 
+                .topbar {
+                    align-items: stretch;
+                }
+
                 .topnav {
                     width: 100%;
-                    flex-wrap: nowrap;
+                    display: grid;
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
                     gap: 8px;
-                    overflow-x: auto;
-                    padding-bottom: 4px;
                 }
 
                 .topnav a,
                 .topnav form {
-                    width: auto;
-                    flex: 0 0 auto;
+                    width: 100%;
+                    min-width: 0;
                 }
 
                 .topnav .button,
                 .topnav a:not(.button) {
-                    width: auto;
+                    width: 100%;
                     justify-content: center;
                     white-space: nowrap;
                 }
@@ -1040,7 +1043,14 @@
                     height: 44px;
                 }
 
+                .song-card {
+                    min-height: 0;
+                    gap: 10px;
+                }
+
                 .song-tags {
+                    display: grid;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
                     gap: 8px;
                 }
 
@@ -1048,6 +1058,22 @@
                     width: 100%;
                     justify-content: center;
                     text-align: center;
+                    min-height: 38px;
+                    padding: 0 8px;
+                }
+
+                .song-card .inline-actions {
+                    display: grid;
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 8px;
+                }
+
+                .song-card .inline-actions form {
+                    margin: 0;
+                }
+
+                .song-card .inline-actions form .button {
+                    width: 100%;
                 }
 
                 .player-meta {
@@ -1118,14 +1144,14 @@
                 .empty-card,
                 .studio-main,
                 .player-shell {
-                    padding: 18px;
+                    padding: 16px;
                 }
 
                 .hero h1,
                 .page-head h1,
                 .player-head h1,
                 .library-hero h1 {
-                    font-size: clamp(1.95rem, 11vw, 2.8rem);
+                    font-size: clamp(1.7rem, 9.8vw, 2.3rem);
                 }
 
                 .player-head {
@@ -1154,17 +1180,92 @@
                 }
 
                 .button {
-                    padding: 11px 16px;
+                    padding: 10px 14px;
                 }
 
                 .topnav {
+                    grid-template-columns: 1fr 1fr;
                     gap: 6px;
                 }
 
                 .topnav .button,
                 .topnav a:not(.button) {
-                    font-size: 0.94rem;
-                    padding: 11px 14px;
+                    font-size: 0.9rem;
+                    padding: 10px 12px;
+                    min-height: 42px;
+                }
+
+                .brand {
+                    gap: 10px;
+                }
+
+                .brand-mark {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 14px;
+                }
+
+                .brand-text strong {
+                    font-size: 0.96rem;
+                }
+
+                .brand-text small {
+                    font-size: 0.56rem;
+                }
+
+                .library-hero {
+                    gap: 14px;
+                }
+
+                .library-hero .section-lead {
+                    margin-top: 8px;
+                    font-size: 0.9rem;
+                    line-height: 1.5;
+                }
+
+                .library-hero-actions .button {
+                    min-height: 44px;
+                }
+
+                .song-card {
+                    gap: 8px;
+                }
+
+                .song-card h2 {
+                    font-size: 1.05rem;
+                    line-height: 1.12;
+                }
+
+                .song-meta {
+                    font-size: 0.64rem;
+                    letter-spacing: 0.14em;
+                }
+
+                .song-tags {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    gap: 6px;
+                }
+
+                .song-tags span {
+                    min-height: 34px;
+                    padding: 0 6px;
+                    font-size: 0.72rem;
+                }
+
+                .song-card .inline-actions {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 6px;
+                }
+
+                .song-card .inline-actions .button,
+                .song-card .inline-actions form .button {
+                    min-height: 40px;
+                    font-size: 0.88rem;
+                    padding: 0 10px;
+                }
+
+                .song-card .inline-actions form {
+                    grid-column: 1 / -1;
                 }
 
                 .player-head .inline-actions {
