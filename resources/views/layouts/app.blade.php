@@ -842,19 +842,23 @@
 
                 .topnav {
                     width: 100%;
-                    flex-wrap: wrap;
-                    gap: 10px;
+                    flex-wrap: nowrap;
+                    gap: 8px;
+                    overflow-x: auto;
+                    padding-bottom: 4px;
                 }
 
                 .topnav a,
                 .topnav form {
-                    width: 100%;
+                    width: auto;
+                    flex: 0 0 auto;
                 }
 
                 .topnav .button,
                 .topnav a:not(.button) {
-                    width: 100%;
+                    width: auto;
                     justify-content: center;
+                    white-space: nowrap;
                 }
 
                 .metadata-grid {
@@ -896,15 +900,6 @@
                     margin-bottom: 14px;
                 }
 
-                .button,
-                .inline-actions .button,
-                .hero-actions .button,
-                .library-hero-actions .button,
-                .studio-actions .button,
-                .danger-zone .button {
-                    width: 100%;
-                }
-
                 .inline-actions,
                 .hero-actions,
                 .library-hero-actions,
@@ -915,6 +910,86 @@
                     width: 100%;
                     flex-direction: column;
                     align-items: stretch;
+                }
+
+                .library-hero-actions .button,
+                .studio-actions .button,
+                .danger-zone .button {
+                    width: 100%;
+                }
+
+                .player-head h1 {
+                    max-width: 100%;
+                    font-size: clamp(2rem, 10vw, 3rem);
+                    line-height: 0.96;
+                }
+
+                .player-head .inline-actions {
+                    display: grid;
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 10px;
+                }
+
+                .player-head .inline-actions form {
+                    grid-column: 1 / -1;
+                    margin: 0;
+                }
+
+                .player-head .inline-actions .button,
+                .player-head .inline-actions form .button {
+                    width: 100%;
+                    min-height: 48px;
+                }
+
+                .player-toolbar {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                    padding: 12px;
+                }
+
+                .toolbar-group {
+                    display: grid;
+                    gap: 8px;
+                }
+
+                .control-card {
+                    padding: 12px;
+                    border-radius: 16px;
+                }
+
+                .control-cluster {
+                    display: grid;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    gap: 8px;
+                }
+
+                .control-cluster .button,
+                .control-cluster strong {
+                    width: 100%;
+                    min-height: 46px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .control-value,
+                .tempo-readout {
+                    font-size: 1.2rem;
+                }
+
+                .beat-indicator {
+                    margin-left: 0;
+                }
+
+                .beat-indicator .control-cluster {
+                    grid-template-columns: 1fr;
+                    justify-items: start;
+                }
+
+                .beat-indicator span {
+                    width: 44px;
+                    height: 44px;
                 }
 
                 .song-tags {
@@ -995,6 +1070,19 @@
                     font-size: clamp(1.95rem, 11vw, 2.8rem);
                 }
 
+                .player-head {
+                    gap: 12px;
+                }
+
+                .player-head h1 {
+                    font-size: clamp(1.7rem, 9vw, 2.35rem);
+                    line-height: 0.98;
+                }
+
+                .player-head p {
+                    font-size: 0.95rem;
+                }
+
                 .section-head h2,
                 .feature-card h2,
                 .song-card h2,
@@ -1008,6 +1096,48 @@
 
                 .button {
                     padding: 13px 18px;
+                }
+
+                .topnav {
+                    gap: 6px;
+                }
+
+                .topnav .button,
+                .topnav a:not(.button) {
+                    font-size: 0.94rem;
+                    padding: 11px 14px;
+                }
+
+                .player-head .inline-actions {
+                    grid-template-columns: 1fr;
+                }
+
+                .player-toolbar {
+                    padding: 10px;
+                }
+
+                .control-card {
+                    padding: 10px;
+                    border-radius: 14px;
+                }
+
+                .control-label {
+                    font-size: 0.68rem;
+                    letter-spacing: 0.12em;
+                }
+
+                .control-cluster {
+                    grid-template-columns: 1fr;
+                }
+
+                .control-cluster .button,
+                .control-cluster strong {
+                    min-height: 44px;
+                }
+
+                .tempo-readout,
+                .control-value {
+                    font-size: 1.08rem;
                 }
 
                 .chart-lines {
