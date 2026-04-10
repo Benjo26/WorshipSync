@@ -254,6 +254,12 @@
             letter-spacing: -0.055em;
         }
 
+        .player-head h1 {
+            max-width: 12ch;
+            font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+            line-height: 0.94;
+        }
+
         .section-head h2,
         .feature-card h2,
         .song-card h2,
