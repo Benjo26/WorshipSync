@@ -14,7 +14,11 @@
             <div>
                 <p class="eyebrow">{{ $song->artist ?: 'Unknown Artist' }}</p>
                 <h1>{{ $song->title }}</h1>
-                <p>{{ $song->default_key }} • {{ $song->bpm }} BPM • {{ $song->time_signature }}</p>
+                <div class="player-meta">
+                    <span>{{ $song->default_key }}</span>
+                    <span>{{ $song->bpm }} BPM</span>
+                    <span>{{ $song->time_signature }}</span>
+                </div>
             </div>
             <div class="inline-actions">
                 <a class="button ghost" href="{{ route('songs.edit', $song) }}">Edit</a>
@@ -43,12 +47,11 @@
                     <button type="button" class="button subtle" data-metronome-toggle>Start</button>
                     <button type="button" class="button ghost" data-tap-tempo>Tap Tempo</button>
                     <strong class="tempo-readout"><span data-bpm-display>{{ $song->bpm }}</span> BPM</strong>
+                    <span class="beat-pill">
+                        <small>Beat</small>
+                        <span data-beat-indicator>1</span>
+                    </span>
                 </div>
-            </div>
-
-            <div class="toolbar-group control-card beat-indicator">
-                <span class="control-label">Beat</span>
-                <span data-beat-indicator>1</span>
             </div>
         </section>
 

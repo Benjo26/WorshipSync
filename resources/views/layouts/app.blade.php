@@ -281,6 +281,25 @@
             line-height: 1.75;
         }
 
+        .player-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .player-meta span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(15, 93, 80, 0.07);
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
         .lead {
             margin: 24px 0 0;
             color: rgba(255, 248, 239, 0.88);
@@ -643,7 +662,7 @@
 
         .player-toolbar {
             display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr) 110px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
             gap: 8px;
             align-items: stretch;
         }
@@ -687,6 +706,36 @@
             font-size: 1.05rem;
             line-height: 1;
             letter-spacing: -0.04em;
+        }
+
+        .beat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 10px;
+            min-height: 40px;
+            border-radius: 999px;
+            background: rgba(15, 93, 80, 0.08);
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+
+        .beat-pill small {
+            color: var(--muted);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .beat-pill span {
+            display: inline-grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            font-size: 0.92rem;
         }
 
         .chart-panel {
@@ -926,12 +975,11 @@
 
                 .player-head .inline-actions {
                     display: grid;
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: 10px;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    gap: 8px;
                 }
 
                 .player-head .inline-actions form {
-                    grid-column: 1 / -1;
                     margin: 0;
                 }
 
@@ -1000,6 +1048,16 @@
                     width: 100%;
                     justify-content: center;
                     text-align: center;
+                }
+
+                .player-meta {
+                    gap: 6px;
+                }
+
+                .player-meta span {
+                    min-height: 28px;
+                    padding: 0 10px;
+                    font-size: 0.86rem;
                 }
 
                 .hero > div:first-child,
@@ -1110,14 +1168,15 @@
                 }
 
                 .player-head .inline-actions {
-                    grid-template-columns: 1fr;
-                    gap: 8px;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    gap: 6px;
                 }
 
                 .player-head .inline-actions .button,
                 .player-head .inline-actions form .button {
-                    min-height: 42px;
-                    font-size: 0.98rem;
+                    min-height: 40px;
+                    font-size: 0.92rem;
+                    padding: 0 10px;
                 }
 
                 .player-toolbar {
@@ -1143,30 +1202,36 @@
                 .control-cluster .button,
                 .control-cluster strong {
                     min-height: 38px;
-                    font-size: 0.96rem;
+                    font-size: 0.9rem;
                     padding: 0 10px;
                 }
 
                 .tempo-readout,
                 .control-value {
-                    font-size: 0.95rem;
+                    font-size: 0.88rem;
                 }
 
                 .control-button {
                     min-width: 36px;
                     min-height: 36px;
-                    padding: 0 10px;
+                    padding: 0 8px;
                 }
 
-                .beat-indicator {
-                    padding: 8px 10px;
-                    gap: 8px;
+                .beat-pill {
+                    min-height: 36px;
+                    padding: 0 8px;
+                    gap: 6px;
                 }
 
-                .beat-indicator span {
-                    width: 36px;
-                    height: 36px;
-                    font-size: 0.95rem;
+                .beat-pill small {
+                    font-size: 0.58rem;
+                    letter-spacing: 0.08em;
+                }
+
+                .beat-pill span {
+                    width: 24px;
+                    height: 24px;
+                    font-size: 0.82rem;
                 }
 
                 .chart-lines {
