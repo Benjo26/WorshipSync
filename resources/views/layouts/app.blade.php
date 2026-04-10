@@ -635,6 +635,52 @@
             padding: 18px;
         }
 
+        .player-toolbar {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr) 110px;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        .toolbar-group {
+            display: grid;
+            gap: 12px;
+        }
+
+        .control-card {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(246, 240, 230, 0.8);
+            border: 1px solid rgba(71, 55, 37, 0.08);
+        }
+
+        .control-label {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .control-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-button {
+            min-width: 56px;
+        }
+
+        .control-value,
+        .tempo-readout {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
         .chart-panel {
             display: grid;
             gap: 18px;
@@ -690,14 +736,14 @@
             }
 
         .beat-indicator {
-            margin-left: auto;
+            align-content: space-between;
         }
 
         .beat-indicator span {
             display: inline-grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
+            width: 54px;
+            height: 54px;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--accent), var(--accent-strong));
             color: #fff;

@@ -28,21 +28,26 @@
         </div>
 
         <section class="player-toolbar">
-            <div class="toolbar-group">
-                <span>Transpose</span>
-                <button type="button" class="button subtle" data-transpose-down>-</button>
-                <strong data-current-key>{{ $song->default_key }}</strong>
-                <button type="button" class="button subtle" data-transpose-up>+</button>
+            <div class="toolbar-group control-card">
+                <span class="control-label">Transpose</span>
+                <div class="control-cluster">
+                    <button type="button" class="button subtle control-button" data-transpose-down>-</button>
+                    <strong class="control-value" data-current-key>{{ $song->default_key }}</strong>
+                    <button type="button" class="button subtle control-button" data-transpose-up>+</button>
+                </div>
             </div>
 
-            <div class="toolbar-group">
-                <span>Metronome</span>
-                <button type="button" class="button subtle" data-metronome-toggle>Start</button>
-                <button type="button" class="button ghost" data-tap-tempo>Tap Tempo</button>
-                <strong><span data-bpm-display>{{ $song->bpm }}</span> BPM</strong>
+            <div class="toolbar-group control-card">
+                <span class="control-label">Metronome</span>
+                <div class="control-cluster">
+                    <button type="button" class="button subtle" data-metronome-toggle>Start</button>
+                    <button type="button" class="button ghost" data-tap-tempo>Tap Tempo</button>
+                    <strong class="tempo-readout"><span data-bpm-display>{{ $song->bpm }}</span> BPM</strong>
+                </div>
             </div>
 
-            <div class="toolbar-group beat-indicator">
+            <div class="toolbar-group control-card beat-indicator">
+                <span class="control-label">Beat</span>
                 <span data-beat-indicator>1</span>
             </div>
         </section>
