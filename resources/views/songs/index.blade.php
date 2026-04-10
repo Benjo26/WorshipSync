@@ -20,6 +20,20 @@
                 <p class="eyebrow">Library</p>
                 <h2>Your Songs</h2>
             </div>
+            <form method="GET" action="{{ route('songs.index') }}" class="search-form">
+                <label class="search-input">
+                    <span class="sr-only">Search songs</span>
+                    <input
+                        type="search"
+                        name="search"
+                        value="{{ $search ?? '' }}"
+                        placeholder="Search title, artist, or key"
+                    >
+                </label>
+                @if (! empty($search))
+                    <a class="button subtle" href="{{ route('songs.index') }}">Clear</a>
+                @endif
+            </form>
         </div>
 
         <div class="song-grid">
@@ -44,10 +58,17 @@
             </article>
         @empty
             <article class="empty-card">
-                <p class="eyebrow">Ready To Start</p>
-                <h2>Your library is ready.</h2>
-                <p>Start with one ChordPro song and shape a clean archive for your worship team.</p>
-                <a class="button" href="{{ route('songs.create') }}">Create Song</a>
+                @if (! empty($search))
+                    <p class="eyebrow">No Match</p>
+                    <h2>No songs found.</h2>
+                    <p>Try another title, artist, or key, or clear the search to see your full library.</p>
+                    <a class="button subtle" href="{{ route('songs.index') }}">Clear Search</a>
+                @else
+                    <p class="eyebrow">Ready To Start</p>
+                    <h2>Your library is ready.</h2>
+                    <p>Start with one ChordPro song and shape a clean archive for your worship team.</p>
+                    <a class="button" href="{{ route('songs.create') }}">Create Song</a>
+                @endif
             </article>
         @endforelse
         </div>

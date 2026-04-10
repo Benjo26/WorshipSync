@@ -8,6 +8,7 @@ use App\Services\ChordProParser;
 use App\Services\SongChartStorage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SongController extends Controller
@@ -18,12 +19,27 @@ class SongController extends Controller
     ) {
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $songs = Auth::user()->songs()->latest()->paginate(12);
+        $search = trim((string) $request->string('search'));
+
+        $songs = Auth::user()
+            ->songs()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($songQuery) use ($search) {
+                    $songQuery
+                        ->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('artist', 'like', '%' . $search . '%')
+                        ->orWhere('default_key', 'like', '%' . $search . '%');
+                });
+            })
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
 
         return view('songs.index', [
             'songs' => $songs,
+            'search' => $search,
         ]);
     }
 

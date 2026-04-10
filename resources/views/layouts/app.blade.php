@@ -384,6 +384,18 @@
             background: rgba(166, 68, 52, 0.08);
         }
 
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .stats-grid,
         .song-grid {
             display: grid;
@@ -426,6 +438,24 @@
         .section-head {
             padding-bottom: 6px;
             border-bottom: 1px solid rgba(76, 58, 36, 0.08);
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-input {
+            display: block;
+            min-width: min(100%, 340px);
+        }
+
+        .search-input input {
+            min-height: 48px;
+            border-radius: 999px;
+            padding-inline: 18px;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .song-card {
@@ -777,6 +807,16 @@
                     grid-template-columns: 1fr;
                 }
 
+                .search-form {
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                .search-input {
+                    min-width: 100%;
+                }
+
                 .hero h1,
                 .page-head h1,
                 .player-head h1,
@@ -906,6 +946,10 @@
                 .song-card h2,
                 .empty-card h2 {
                     font-size: 1.35rem;
+                }
+
+                .search-input input {
+                    min-height: 46px;
                 }
 
                 .button {
