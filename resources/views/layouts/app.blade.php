@@ -638,32 +638,32 @@
             border: 1px solid var(--line);
             border-radius: var(--radius-lg);
             background: rgba(255, 255, 255, 0.88);
-            padding: 14px;
+            padding: 10px;
         }
 
         .player-toolbar {
             display: grid;
             grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr) 110px;
-            gap: 10px;
+            gap: 8px;
             align-items: stretch;
         }
 
         .toolbar-group {
             display: grid;
-            gap: 8px;
+            gap: 6px;
         }
 
         .control-card {
-            padding: 12px 14px;
-            border-radius: 16px;
+            padding: 10px 12px;
+            border-radius: 14px;
             background: rgba(246, 240, 230, 0.8);
             border: 1px solid rgba(71, 55, 37, 0.08);
         }
 
         .control-label {
-            font-size: 0.76rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.14em;
             color: var(--muted);
             font-weight: 700;
         }
@@ -672,17 +672,19 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .control-button {
-            min-width: 46px;
+            min-width: 40px;
+            min-height: 40px;
+            padding: 0 14px;
         }
 
         .control-value,
         .tempo-readout {
             font-family: var(--font-display);
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             line-height: 1;
             letter-spacing: -0.04em;
         }
@@ -748,8 +750,8 @@
         .beat-indicator span {
             display: inline-grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
+            width: 38px;
+            height: 38px;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--accent), var(--accent-strong));
             color: #fff;
