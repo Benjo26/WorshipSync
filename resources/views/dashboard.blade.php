@@ -9,9 +9,6 @@
                 Your team’s songs, keys, and rehearsal-ready charts in one calm workspace.
             </p>
         </div>
-        <div class="library-hero-actions">
-            <a class="button" href="{{ route('songs.create') }}">Add Song</a>
-        </div>
     </section>
 
     <section class="section-block">
