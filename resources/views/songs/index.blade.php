@@ -1,25 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="library-hero hero-premium">
-        <div class="library-hero-copy">
-            <p class="eyebrow">Songs</p>
-            <h1>Songs</h1>
-            <p class="section-lead">
-                Browse, edit, and open every chart from one refined rehearsal view.
-            </p>
-        </div>
-        <div class="library-hero-actions">
-            <a class="button" href="{{ route('songs.create') }}">New Song</a>
-        </div>
-    </section>
-
     <section class="section-block">
         <div class="section-head">
             <div>
                 <p class="eyebrow">Library</p>
                 <h2>Your Songs</h2>
             </div>
+            <a class="button" href="{{ route('songs.create') }}">New Song</a>
             <form method="GET" action="{{ route('songs.index') }}" class="search-form">
                 <label class="search-input">
                     <span class="sr-only">Search songs</span>
