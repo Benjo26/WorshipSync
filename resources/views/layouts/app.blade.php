@@ -525,12 +525,16 @@
         }
 
         .song-tags span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 8px 11px;
             border-radius: 999px;
             background: rgba(15, 93, 80, 0.08);
             color: var(--accent-strong);
             font-size: 0.78rem;
             font-weight: 700;
+            line-height: 1;
         }
 
         .empty-card {
@@ -1285,6 +1289,7 @@
                     padding: 0 8px;
                     font-size: 0.72rem;
                     white-space: nowrap;
+                    line-height: 1;
                 }
 
                 .song-card .inline-actions {
