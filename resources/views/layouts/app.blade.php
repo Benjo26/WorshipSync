@@ -1281,9 +1281,10 @@
                 }
 
                 .song-tags span {
-                    min-height: 34px;
-                    padding: 0 6px;
+                    min-height: 36px;
+                    padding: 0 8px;
                     font-size: 0.72rem;
+                    white-space: nowrap;
                 }
 
                 .song-card .inline-actions {
@@ -1403,7 +1404,7 @@
                     <a class="button ghost" href="{{ route('songs.create') }}">New Song</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="button subtle">Logout</button>
+                        <button type="submit" class="button danger-outline">Logout</button>
                     </form>
                 @else
                     <a class="button" href="{{ route('google.redirect') }}">Sign in with Google</a>

@@ -1273,9 +1273,10 @@ small {
     }
 
     .song-tags span {
-        min-height: 34px;
-        padding: 0 6px;
+        min-height: 36px;
+        padding: 0 8px;
         font-size: 0.72rem;
+        white-space: nowrap;
     }
 
     .song-card .inline-actions {
