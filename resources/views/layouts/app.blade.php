@@ -1122,6 +1122,10 @@
                     padding: 10px 0 28px;
                 }
 
+                .content {
+                    gap: 18px;
+                }
+
                 .topbar,
                 .hero > div:first-child,
                 .library-hero,
@@ -1145,6 +1149,11 @@
                 .studio-main,
                 .player-shell {
                     padding: 16px;
+                }
+
+                .topbar {
+                    padding: 14px;
+                    gap: 12px;
                 }
 
                 .hero h1,
@@ -1186,6 +1195,7 @@
                 .topnav {
                     grid-template-columns: 1fr 1fr;
                     gap: 6px;
+                    align-items: stretch;
                 }
 
                 .topnav .button,
@@ -1193,10 +1203,23 @@
                     font-size: 0.9rem;
                     padding: 10px 12px;
                     min-height: 42px;
+                    border-radius: 18px;
+                    text-align: center;
+                }
+
+                .topnav a:not(.button) {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(255, 255, 255, 0.08);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    color: rgba(255, 250, 243, 0.92);
                 }
 
                 .brand {
                     gap: 10px;
+                    width: 100%;
+                    align-items: center;
                 }
 
                 .brand-mark {
@@ -1217,6 +1240,15 @@
                     gap: 14px;
                 }
 
+                .section-head {
+                    gap: 12px;
+                    align-items: flex-start;
+                }
+
+                .section-head > div {
+                    width: 100%;
+                }
+
                 .library-hero .section-lead {
                     margin-top: 8px;
                     font-size: 0.9rem;
@@ -1229,11 +1261,13 @@
 
                 .song-card {
                     gap: 8px;
+                    align-content: start;
                 }
 
                 .song-card h2 {
                     font-size: 1.05rem;
                     line-height: 1.12;
+                    margin-top: 2px;
                 }
 
                 .song-meta {
@@ -1255,6 +1289,7 @@
                 .song-card .inline-actions {
                     grid-template-columns: 1fr 1fr;
                     gap: 6px;
+                    align-items: stretch;
                 }
 
                 .song-card .inline-actions .button,
