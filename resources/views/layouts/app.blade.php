@@ -571,6 +571,42 @@
             box-shadow: 0 18px 36px rgba(255, 107, 43, 0.14);
         }
 
+        body.app-body .player-toolbar,
+        body.app-body .chart-panel,
+        body.app-body .control-card {
+            color: var(--ink);
+        }
+
+        body.app-body .control-label,
+        body.app-body .control-value,
+        body.app-body .tempo-readout,
+        body.app-body .chart-section h2,
+        body.app-body .chart-lines,
+        body.app-body .chart-empty-state,
+        body.app-body .measure,
+        body.app-body .chord {
+            color: var(--ink);
+        }
+
+        body.app-body .player-toolbar .button.subtle,
+        body.app-body .player-toolbar .button.ghost {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(15, 93, 80, 0.12);
+            color: var(--accent-strong);
+            box-shadow: none;
+        }
+
+        body.app-body .player-toolbar .button.subtle:hover,
+        body.app-body .player-toolbar .button.ghost:hover {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        body.app-body .player-toolbar .button.subtle:focus-visible,
+        body.app-body .player-toolbar .button.ghost:focus-visible {
+            outline: 2px solid rgba(255, 107, 43, 0.28);
+            outline-offset: 2px;
+        }
+
         .mobile-tabbar {
             display: none;
         }
