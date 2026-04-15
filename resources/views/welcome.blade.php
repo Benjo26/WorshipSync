@@ -1,28 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero">
-        <div>
-            <p class="eyebrow">Built for rehearsals, teams, and Sunday sets</p>
-            <h1>Store chords, arrange songs, and lead with confidence.</h1>
-            <p class="lead">
-                WorshipSync gives your band one place to keep chord charts, section flow, song keys, BPM, and rehearsal notes.
-                Open any song in a distraction-free player with live transpose controls and a built-in metronome.
+    <section class="landing-hero">
+        <div class="landing-copy">
+            <p class="landing-kicker">Worship planning, rebuilt</p>
+            <h1>Lead every set with a cleaner, faster worship workspace.</h1>
+            <p class="landing-lead">
+                Keep ChordPro charts, transpose live, lock tempo, and open every song in a player built for rehearsals and Sunday mornings.
             </p>
-            <div class="hero-actions">
-                <a class="button" href="{{ route('google.redirect') }}">Continue with Google</a>
+            <div class="landing-actions">
+                <a class="button landing-primary" href="{{ route('google.redirect') }}">Start With Google</a>
+                <a class="button landing-secondary" href="{{ route('songs.index') }}">Open Library</a>
+            </div>
+            <div class="landing-stats">
+                <span>ChordPro native</span>
+                <span>Live transpose</span>
+                <span>Metronome ready</span>
             </div>
         </div>
 
-        <div class="feature-card">
-            <h2>What musicians get</h2>
-            <ul>
-                <li>Quick song entry with section-based arrangements</li>
-                <li>Chord charts saved in Laravel storage</li>
-                <li>Instant transpose for different vocal keys</li>
-                <li>Tap tempo metronome for rehearsal practice</li>
-                <li>Google sign-in for easy team access</li>
-            </ul>
+        <div class="landing-visual" aria-hidden="true">
+            <div class="landing-orb"></div>
+            <div class="landing-device">
+                <div class="landing-device-top">
+                    <span class="landing-dot"></span>
+                    <span class="landing-dot"></span>
+                    <span class="landing-dot"></span>
+                </div>
+                <div class="landing-device-body">
+                    <div class="landing-panel landing-panel-primary">
+                        <p class="eyebrow">Now Playing</p>
+                        <strong>Amazing Grace</strong>
+                        <div class="landing-chip-row">
+                            <span>G Major</span>
+                            <span>72 BPM</span>
+                            <span>4/4</span>
+                        </div>
+                    </div>
+                    <div class="landing-panel landing-panel-secondary">
+                        <div class="landing-mini-meter">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="landing-mini-copy">
+                            <p>Transpose and rehearse in one player.</p>
+                        </div>
+                    </div>
+                    <div class="landing-floating-card landing-floating-left">
+                        <small>Set Ready</small>
+                        <strong>Sunday 8:30 AM</strong>
+                    </div>
+                    <div class="landing-floating-card landing-floating-right">
+                        <small>Live Tools</small>
+                        <strong>Tap Tempo</strong>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

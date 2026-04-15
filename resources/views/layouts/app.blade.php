@@ -50,6 +50,14 @@
                 linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
         }
 
+        body.landing-body {
+            background:
+                radial-gradient(circle at 72% 18%, rgba(255, 92, 36, 0.18), transparent 22%),
+                radial-gradient(circle at 18% 20%, rgba(15, 93, 80, 0.18), transparent 26%),
+                linear-gradient(180deg, #090909 0%, #050505 100%);
+            color: #f5efe7;
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -60,6 +68,14 @@
                 linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
             background-size: 62px 62px;
             mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 76%);
+        }
+
+        body.landing-body::before {
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 82%);
         }
 
         a {
@@ -164,11 +180,278 @@
             font-weight: 600;
         }
 
+        body.landing-body .topbar {
+            background: rgba(16, 16, 16, 0.92);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.landing-body .topnav {
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        body.landing-body .topnav .button {
+            box-shadow: none;
+        }
+
+        body.landing-body .topnav .button.ghost {
+            background: linear-gradient(135deg, #ff7b34, #ff5623);
+            color: #fff;
+            border: none;
+        }
+
+        body.landing-body .topnav .button.subtle {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5efe7;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .hero {
             display: grid;
             grid-template-columns: minmax(0, 1.38fr) minmax(320px, 0.7fr);
             gap: 26px;
             align-items: stretch;
+        }
+
+        .landing-hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(360px, 0.95fr);
+            gap: 32px;
+            align-items: center;
+            min-height: calc(100vh - 170px);
+            padding: 48px 8px 20px;
+        }
+
+        .landing-copy {
+            display: grid;
+            gap: 20px;
+            max-width: 660px;
+            align-self: center;
+        }
+
+        .landing-kicker {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .landing-hero h1 {
+            margin: 0;
+            max-width: 10ch;
+            color: #fff8f1;
+            font-size: clamp(3.4rem, 7vw, 6.6rem);
+            line-height: 0.92;
+            letter-spacing: -0.06em;
+            font-family: var(--font-body);
+            font-weight: 800;
+        }
+
+        .landing-hero h1::first-line {
+            color: #ff6a2b;
+        }
+
+        .landing-lead {
+            margin: 0;
+            max-width: 32rem;
+            color: rgba(255, 245, 235, 0.74);
+            font-size: 1.12rem;
+            line-height: 1.72;
+        }
+
+        .landing-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .landing-primary {
+            background: linear-gradient(135deg, #ff7b34, #ff5623);
+            box-shadow: 0 24px 44px rgba(255, 96, 36, 0.24);
+        }
+
+        .landing-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff4eb;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: none;
+        }
+
+        .landing-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .landing-stats span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 247, 239, 0.8);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .landing-visual {
+            position: relative;
+            min-height: 640px;
+            display: grid;
+            place-items: end center;
+        }
+
+        .landing-orb {
+            position: absolute;
+            right: 20px;
+            bottom: 14px;
+            width: min(540px, 100%);
+            aspect-ratio: 1 / 1.08;
+            border-radius: 999px 999px 44px 44px;
+            background: radial-gradient(circle at 50% 10%, rgba(255, 117, 54, 0.3), rgba(103, 35, 16, 0.7) 70%, rgba(0, 0, 0, 0) 72%);
+            filter: blur(0.5px);
+        }
+
+        .landing-device {
+            position: relative;
+            z-index: 1;
+            width: min(560px, 100%);
+            border-radius: 34px;
+            padding: 14px;
+            background: linear-gradient(180deg, rgba(24, 24, 24, 0.94), rgba(12, 12, 12, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+        }
+
+        .landing-device-top {
+            display: flex;
+            gap: 8px;
+            padding: 6px 6px 12px;
+        }
+
+        .landing-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .landing-device-body {
+            position: relative;
+            display: grid;
+            gap: 16px;
+            min-height: 520px;
+            padding: 22px;
+            border-radius: 24px;
+            background:
+                radial-gradient(circle at 80% 16%, rgba(255, 106, 43, 0.12), transparent 24%),
+                linear-gradient(180deg, rgba(20, 20, 20, 0.98), rgba(10, 10, 10, 1));
+            overflow: hidden;
+        }
+
+        .landing-panel {
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .landing-panel-primary {
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+        }
+
+        .landing-panel-primary strong,
+        .landing-floating-card strong {
+            display: block;
+            color: #fff8f1;
+            font-size: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .landing-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .landing-chip-row span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 245, 235, 0.84);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .landing-panel-secondary {
+            display: grid;
+            gap: 18px;
+            padding: 22px;
+            background: linear-gradient(180deg, rgba(255, 93, 35, 0.14), rgba(255, 255, 255, 0.03));
+        }
+
+        .landing-mini-meter {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            align-items: end;
+            min-height: 96px;
+        }
+
+        .landing-mini-meter span {
+            border-radius: 18px 18px 10px 10px;
+            background: linear-gradient(180deg, rgba(255, 122, 56, 0.9), rgba(255, 89, 33, 0.38));
+        }
+
+        .landing-mini-meter span:nth-child(1) { height: 54px; }
+        .landing-mini-meter span:nth-child(2) { height: 82px; }
+        .landing-mini-meter span:nth-child(3) { height: 66px; }
+        .landing-mini-meter span:nth-child(4) { height: 94px; }
+
+        .landing-mini-copy p {
+            margin: 0;
+            max-width: 22rem;
+            color: rgba(255, 245, 235, 0.74);
+            line-height: 1.65;
+        }
+
+        .landing-floating-card {
+            position: absolute;
+            display: grid;
+            gap: 4px;
+            min-width: 170px;
+            padding: 14px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+        }
+
+        .landing-floating-left {
+            left: 22px;
+            bottom: 30px;
+        }
+
+        .landing-floating-right {
+            right: 22px;
+            top: 210px;
+        }
+
+        .landing-floating-card small {
+            color: rgba(255, 255, 255, 0.56);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 0.68rem;
         }
 
         .hero > div:first-child,
@@ -850,6 +1133,29 @@
             }
 
             @media (max-width: 840px) {
+                .landing-hero {
+                    grid-template-columns: 1fr;
+                    min-height: auto;
+                    padding: 20px 0 8px;
+                }
+
+                .landing-copy {
+                    max-width: 100%;
+                }
+
+                .landing-hero h1 {
+                    max-width: 100%;
+                    font-size: clamp(2.8rem, 12vw, 4.6rem);
+                }
+
+                .landing-visual {
+                    min-height: 420px;
+                }
+
+                .landing-device-body {
+                    min-height: 420px;
+                }
+
                 .shell {
                     width: min(100% - 20px, 100%);
                     padding: 14px 0 40px;
@@ -1117,6 +1423,87 @@
             }
 
             @media (max-width: 520px) {
+                .landing-hero {
+                    gap: 20px;
+                    padding-top: 6px;
+                }
+
+                .landing-hero h1 {
+                    font-size: clamp(2.2rem, 13vw, 3.2rem);
+                }
+
+                .landing-lead {
+                    font-size: 0.95rem;
+                }
+
+                .landing-actions {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                }
+
+                .landing-stats {
+                    gap: 8px;
+                }
+
+                .landing-stats span {
+                    min-height: 34px;
+                    padding: 0 12px;
+                    font-size: 0.82rem;
+                }
+
+                .landing-visual {
+                    min-height: 320px;
+                }
+
+                .landing-orb {
+                    width: 92%;
+                    right: 4%;
+                    bottom: 8px;
+                }
+
+                .landing-device {
+                    padding: 10px;
+                    border-radius: 26px;
+                }
+
+                .landing-device-body {
+                    min-height: 320px;
+                    padding: 14px;
+                    border-radius: 18px;
+                }
+
+                .landing-panel-primary,
+                .landing-panel-secondary {
+                    padding: 16px;
+                    border-radius: 18px;
+                }
+
+                .landing-panel-primary strong,
+                .landing-floating-card strong {
+                    font-size: 1.14rem;
+                }
+
+                .landing-chip-row {
+                    gap: 8px;
+                }
+
+                .landing-chip-row span {
+                    min-height: 34px;
+                    padding: 0 12px;
+                    font-size: 0.82rem;
+                }
+
+                .landing-floating-card {
+                    min-width: 126px;
+                    padding: 10px 12px;
+                }
+
+                .landing-floating-right {
+                    top: auto;
+                    right: 14px;
+                    bottom: 118px;
+                }
+
                 body::before {
                     background-size: 40px 40px;
                 }
@@ -1391,7 +1778,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
-<body>
+<body class="{{ request()->routeIs('welcome') ? 'landing-body' : '' }}">
     <div class="shell">
         <header class="topbar">
             <a class="brand" href="{{ route('welcome') }}">
