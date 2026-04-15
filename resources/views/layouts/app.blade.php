@@ -768,6 +768,8 @@
 
         .song-card {
             display: grid;
+            grid-template-rows: auto auto auto 1fr auto;
+            align-content: start;
             gap: 12px;
             position: relative;
             overflow: hidden;
@@ -801,6 +803,14 @@
             letter-spacing: 0.18em;
         }
 
+        .song-card h2 {
+            min-height: 2.3em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .song-tags {
             display: flex;
             flex-wrap: wrap;
@@ -818,6 +828,23 @@
             font-size: 0.78rem;
             font-weight: 700;
             line-height: 1;
+        }
+
+        .song-card .inline-actions {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .song-card .inline-actions form {
+            margin: 0;
+        }
+
+        .song-card .inline-actions .button,
+        .song-card .inline-actions form .button {
+            width: 100%;
+            min-height: 46px;
         }
 
         .empty-card {
