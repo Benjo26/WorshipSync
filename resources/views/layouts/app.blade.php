@@ -58,6 +58,14 @@
             color: #f5efe7;
         }
 
+        body.app-body {
+            background:
+                radial-gradient(circle at 18% 12%, rgba(15, 93, 80, 0.14), transparent 24%),
+                radial-gradient(circle at 82% 18%, rgba(255, 107, 43, 0.08), transparent 22%),
+                linear-gradient(180deg, #0b0d0c 0%, #111513 100%);
+            color: #f2eee7;
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -76,6 +84,14 @@
                 linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
             background-size: 72px 72px;
             mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 82%);
+        }
+
+        body.app-body::before {
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.44), transparent 82%);
         }
 
         a {
@@ -183,6 +199,17 @@
         body.landing-body .topbar {
             background: rgba(16, 16, 16, 0.92);
             border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.app-body .topbar {
+            background:
+                linear-gradient(180deg, rgba(17, 20, 19, 0.96), rgba(23, 29, 26, 0.92));
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        body.app-body .topnav a:not(.button) {
+            color: rgba(246, 239, 229, 0.76);
         }
 
         body.landing-body .topnav {
@@ -454,6 +481,100 @@
             font-size: 0.68rem;
         }
 
+        body.app-body .library-hero,
+        body.app-body .player-shell,
+        body.app-body .feature-card,
+        body.app-body .song-card,
+        body.app-body .panel,
+        body.app-body .empty-card,
+        body.app-body .flash,
+        body.app-body .error-box,
+        body.app-body .section-block {
+            background: linear-gradient(180deg, rgba(23, 28, 26, 0.88), rgba(18, 22, 20, 0.92));
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 56px rgba(0, 0, 0, 0.22);
+        }
+
+        body.app-body .library-hero::after,
+        body.app-body .song-card::after {
+            background: radial-gradient(circle, rgba(255, 107, 43, 0.16), transparent 72%);
+        }
+
+        body.app-body .hero h1,
+        body.app-body .page-head h1,
+        body.app-body .player-head h1,
+        body.app-body .library-hero h1,
+        body.app-body .section-head h2,
+        body.app-body .song-card h2,
+        body.app-body .empty-card h2 {
+            color: #fff8ef;
+        }
+
+        body.app-body .section-lead,
+        body.app-body .song-card p,
+        body.app-body .empty-card p,
+        body.app-body .player-head p,
+        body.app-body .song-meta,
+        body.app-body small,
+        body.app-body .metadata-grid label span,
+        body.app-body .chart-field span {
+            color: rgba(236, 226, 214, 0.68);
+        }
+
+        body.app-body .section-head,
+        body.app-body .chart-section {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.app-body .search-input input,
+        body.app-body input,
+        body.app-body textarea {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #fff8ef;
+        }
+
+        body.app-body input::placeholder,
+        body.app-body textarea::placeholder {
+            color: rgba(236, 226, 214, 0.38);
+        }
+
+        body.app-body input:focus,
+        body.app-body textarea:focus {
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 5px rgba(255, 107, 43, 0.08);
+            border-color: rgba(255, 107, 43, 0.26);
+        }
+
+        body.app-body .song-tags span,
+        body.app-body .player-meta span,
+        body.app-body .measure,
+        body.app-body .beat-pill,
+        body.app-body .preview-meta span {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #f2eee7;
+        }
+
+        body.app-body .button.ghost {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #fff8ef;
+        }
+
+        body.app-body .button.subtle {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 245, 235, 0.84);
+        }
+
+        body.app-body .button {
+            box-shadow: 0 18px 36px rgba(255, 107, 43, 0.14);
+        }
+
+        .mobile-tabbar {
+            display: none;
+        }
+
         .hero > div:first-child,
         .library-hero,
         .player-shell,
@@ -708,7 +829,7 @@
         .song-grid {
             display: grid;
             gap: 16px;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
             align-items: start;
         }
 
@@ -832,7 +953,7 @@
 
         .song-card .inline-actions {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(88px, 1fr));
             gap: 10px;
             align-items: stretch;
         }
@@ -1805,7 +1926,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
-<body class="{{ request()->routeIs('welcome') ? 'landing-body' : '' }}">
+<body class="{{ request()->routeIs('welcome') ? 'landing-body' : '' }} {{ auth()->check() && !request()->routeIs('welcome') ? 'app-body' : '' }}">
     <div class="shell">
         <header class="topbar">
             <a class="brand" href="{{ route('welcome') }}">
@@ -1838,6 +1959,14 @@
         <main class="content">
             @yield('content')
         </main>
+
+        @auth
+            <nav class="mobile-tabbar" aria-label="Mobile navigation">
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'is-active' : '' }}">Dashboard</a>
+                <a href="{{ route('songs.index') }}" class="{{ request()->routeIs('songs.index', 'songs.player') ? 'is-active' : '' }}">Songs</a>
+                <a href="{{ route('songs.create') }}" class="{{ request()->routeIs('songs.create') ? 'is-active is-accent' : 'is-accent' }}">New</a>
+            </nav>
+        @endauth
     </div>
 </body>
 </html>
