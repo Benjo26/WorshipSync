@@ -181,7 +181,8 @@
             line-height: 1;
             letter-spacing: -0.025em;
             color: #fffaf3;
-            font-family: var(--font-display);
+            font-family: var(--font-body);
+            font-weight: 800;
         }
 
         .brand-text small {
@@ -701,6 +702,8 @@
             font-size: clamp(2.35rem, 5vw, 4.8rem);
             line-height: 0.9;
             letter-spacing: -0.055em;
+            font-family: var(--font-body);
+            font-weight: 800;
         }
 
         .player-head h1 {
@@ -717,6 +720,8 @@
             margin: 0;
             font-size: 1.42rem;
             line-height: 1.08;
+            font-family: var(--font-body);
+            font-weight: 800;
         }
 
         .lead,
@@ -899,6 +904,8 @@
             font-size: clamp(1.65rem, 2.5vw, 2.5rem);
             line-height: 1;
             letter-spacing: -0.04em;
+            font-family: var(--font-body);
+            font-weight: 800;
         }
 
         .section-block {
@@ -1182,10 +1189,11 @@
 
         .control-value,
         .tempo-readout {
-            font-family: var(--font-display);
+            font-family: var(--font-body);
             font-size: 1.05rem;
             line-height: 1;
             letter-spacing: -0.04em;
+            font-weight: 800;
         }
 
         .beat-pill {
