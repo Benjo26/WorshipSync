@@ -588,6 +588,15 @@
             color: var(--ink);
         }
 
+        body.app-body .player-toolbar .beat-pill,
+        body.app-body .player-toolbar .beat-pill small {
+            color: var(--muted);
+        }
+
+        body.app-body .player-toolbar .beat-pill small {
+            opacity: 1;
+        }
+
         body.app-body .player-toolbar .button.subtle,
         body.app-body .player-toolbar .button.ghost {
             background: rgba(255, 255, 255, 0.92);
