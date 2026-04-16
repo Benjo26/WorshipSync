@@ -572,6 +572,16 @@
             box-shadow: 0 18px 36px rgba(255, 107, 43, 0.14);
         }
 
+        body.app-body .topnav .global-search-form .search-input input {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #fff8ef;
+        }
+
+        body.app-body .topnav .global-search-form .search-input input::placeholder {
+            color: rgba(236, 226, 214, 0.52);
+        }
+
         body.app-body .player-toolbar,
         body.app-body .chart-panel,
         body.app-body .control-card {
@@ -927,6 +937,11 @@
             gap: 10px;
         }
 
+        .global-search-form {
+            flex: 1 1 260px;
+            max-width: 320px;
+        }
+
         .search-input {
             display: block;
             min-width: min(100%, 340px);
@@ -937,6 +952,16 @@
             border-radius: 999px;
             padding-inline: 18px;
             background: rgba(255, 255, 255, 0.9);
+        }
+
+        .global-search-form .search-input,
+        .global-search-form .search-input input {
+            min-width: 0;
+            width: 100%;
+        }
+
+        .topnav .global-search-form {
+            margin-right: 4px;
         }
 
         .song-card {
@@ -1432,6 +1457,12 @@
                     width: 100%;
                     flex-direction: column;
                     align-items: stretch;
+                }
+
+                .topnav .global-search-form {
+                    grid-column: 1 / -1;
+                    max-width: none;
+                    margin-right: 0;
                 }
 
                 .search-input {
@@ -1992,6 +2023,17 @@
 
             <nav class="topnav">
                 @auth
+                    <form method="GET" action="{{ route('songs.index') }}" class="search-form global-search-form">
+                        <label class="search-input">
+                            <span class="sr-only">Search songs</span>
+                            <input
+                                type="search"
+                                name="search"
+                                value="{{ request('search', '') }}"
+                                placeholder="Search songs"
+                            >
+                        </label>
+                    </form>
                     <a href="{{ route('dashboard') }}">Dashboard</a>
                     <a href="{{ route('songs.index') }}">Songs</a>
                     <a class="button ghost" href="{{ route('songs.create') }}">New Song</a>

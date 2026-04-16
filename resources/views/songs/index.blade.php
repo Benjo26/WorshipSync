@@ -7,21 +7,6 @@
                 <p class="eyebrow">Library</p>
                 <h2>Your Songs</h2>
             </div>
-            <a class="button" href="{{ route('songs.create') }}">New Song</a>
-            <form method="GET" action="{{ route('songs.index') }}" class="search-form">
-                <label class="search-input">
-                    <span class="sr-only">Search songs</span>
-                    <input
-                        type="search"
-                        name="search"
-                        value="{{ $search ?? '' }}"
-                        placeholder="Search title, artist, or key"
-                    >
-                </label>
-                @if (! empty($search))
-                    <a class="button subtle" href="{{ route('songs.index') }}">Clear</a>
-                @endif
-            </form>
         </div>
 
         <div class="song-grid">
