@@ -34,16 +34,6 @@
 
             <div class="live-song-list">
                 @forelse ($songs as $song)
-                    @php
-                        $songPayload = [
-                            'id' => $song->id,
-                            'title' => $song->title,
-                            'artist' => $song->artist ?: 'Unknown Artist',
-                            'default_key' => $song->default_key,
-                            'bpm' => $song->bpm,
-                            'time_signature' => $song->time_signature,
-                        ];
-                    @endphp
                     <article class="live-song-option" data-song-id="{{ $song->id }}">
                         <div>
                             <p class="song-meta">{{ $song->artist ?: 'Unknown Artist' }}</p>
@@ -58,7 +48,12 @@
                             class="button ghost"
                             type="button"
                             data-live-add
-                            data-song="{{ e(json_encode($songPayload)) }}"
+                            data-song-id="{{ $song->id }}"
+                            data-song-title="{{ $song->title }}"
+                            data-song-artist="{{ $song->artist ?: 'Unknown Artist' }}"
+                            data-song-key="{{ $song->default_key }}"
+                            data-song-bpm="{{ $song->bpm }}"
+                            data-song-time-signature="{{ $song->time_signature }}"
                         >
                             Add
                         </button>

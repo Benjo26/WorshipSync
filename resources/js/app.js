@@ -247,6 +247,15 @@ const createLiveSetItem = (song) => {
     return item;
 };
 
+const readLiveSetSong = (button) => ({
+    id: Number(button.dataset.songId || 0),
+    title: button.dataset.songTitle || '',
+    artist: button.dataset.songArtist || 'Unknown Artist',
+    default_key: button.dataset.songKey || '',
+    bpm: button.dataset.songBpm || '',
+    time_signature: button.dataset.songTimeSignature || '',
+});
+
 const bootLiveSetBuilder = (root) => {
     const selection = root.querySelector('[data-live-selection]');
     const emptyState = root.querySelector('[data-live-empty]');
@@ -271,7 +280,7 @@ const bootLiveSetBuilder = (root) => {
         emptyState.classList.toggle('is-hidden', items.length > 0);
 
         root.querySelectorAll('[data-live-add]').forEach((button) => {
-            const song = JSON.parse(button.dataset.song || '{}');
+            const song = readLiveSetSong(button);
             const exists = selection.querySelector(`[data-song-id="${song.id}"]`);
             button.disabled = Boolean(exists);
             button.textContent = exists ? 'Added' : 'Add';
@@ -282,9 +291,9 @@ const bootLiveSetBuilder = (root) => {
         const addButton = event.target.closest('[data-live-add]');
 
         if (addButton) {
-            const song = JSON.parse(addButton.dataset.song || '{}');
+            const song = readLiveSetSong(addButton);
 
-            if (!selection.querySelector(`[data-song-id="${song.id}"]`)) {
+            if (song.id && !selection.querySelector(`[data-song-id="${song.id}"]`)) {
                 selection.appendChild(createLiveSetItem(song));
                 sync();
             }
