@@ -1332,10 +1332,32 @@
             gap: 18px;
         }
 
+        .live-set-player-list {
+            gap: 24px;
+        }
+
+        .live-set-player-shell {
+            gap: 22px;
+        }
+
         .live-set-preview-copy {
             display: grid;
             gap: 6px;
             min-width: 0;
+        }
+
+        .live-set-order-chip {
+            background: rgba(255, 141, 77, 0.18);
+            color: #ffb181;
+        }
+
+        .button.is-static {
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .live-set-toolbar-preview .button.is-static {
+            opacity: 1;
         }
 
         .live-set-preview-copy .song-tags span:nth-child(1) {

@@ -20,22 +20,48 @@
             </div>
         </div>
 
-        <div class="live-set-preview-list">
+        <div class="live-set-preview-list live-set-player-list">
             @foreach ($previewSongs as $previewSong)
-                <article class="live-set-preview-card">
-                    <div class="live-set-preview-head">
-                        <span class="live-set-order-pill">{{ str_pad((string) $previewSong['order'], 2, '0', STR_PAD_LEFT) }}</span>
-                        <div class="live-set-preview-copy">
-                            <p class="song-meta">{{ $previewSong['song']->artist ?: 'Unknown Artist' }}</p>
-                            <h2>{{ $previewSong['song']->title }}</h2>
-                            <div class="song-tags">
+                <article class="player-shell live-set-player-shell">
+                    <div class="player-head">
+                        <div>
+                            <p class="eyebrow">{{ $previewSong['song']->artist ?: 'Unknown Artist' }}</p>
+                            <h1>{{ $previewSong['song']->title }}</h1>
+                            <div class="player-meta">
+                                <span class="live-set-order-chip">{{ str_pad((string) $previewSong['order'], 2, '0', STR_PAD_LEFT) }}</span>
                                 <span>{{ $previewSong['song']->default_key }}</span>
                                 <span>{{ $previewSong['song']->bpm }} BPM</span>
                                 <span>{{ $previewSong['song']->time_signature }}</span>
                             </div>
                         </div>
-                        <a class="button ghost" href="{{ route('songs.player', $previewSong['song']) }}">Open Player</a>
+                        <div class="inline-actions">
+                            <a class="button ghost" href="{{ route('songs.player', $previewSong['song']) }}">Open Player</a>
+                        </div>
                     </div>
+
+                    <section class="player-toolbar live-set-toolbar-preview" aria-hidden="true">
+                        <div class="toolbar-group control-card">
+                            <span class="control-label">Transpose</span>
+                            <div class="control-cluster">
+                                <span class="button subtle control-button is-static">-</span>
+                                <strong class="control-value">{{ $previewSong['song']->default_key }}</strong>
+                                <span class="button subtle control-button is-static">+</span>
+                            </div>
+                        </div>
+
+                        <div class="toolbar-group control-card">
+                            <span class="control-label">Metronome</span>
+                            <div class="control-cluster">
+                                <span class="button subtle is-static">Start</span>
+                                <span class="button ghost is-static">Tap Tempo</span>
+                                <strong class="tempo-readout">{{ $previewSong['song']->bpm }} BPM</strong>
+                                <span class="beat-pill">
+                                    <small>Beat</small>
+                                    <span>1</span>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
 
                     <div class="chart-panel">
                         @forelse ($previewSong['chart']['sections'] as $section)

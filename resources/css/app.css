@@ -1286,6 +1286,28 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
     gap: 18px;
 }
 
+.live-set-player-list {
+    gap: 24px;
+}
+
+.live-set-player-shell {
+    gap: 22px;
+}
+
+.live-set-order-chip {
+    background: rgba(255, 141, 77, 0.18);
+    color: #ffb181;
+}
+
+.button.is-static {
+    pointer-events: none;
+    user-select: none;
+}
+
+.live-set-toolbar-preview .button.is-static {
+    opacity: 1;
+}
+
 .live-set-preview-card {
     position: relative;
     overflow: hidden;
