@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Song::class);
     }
+
+    public function liveSets(): HasMany
+    {
+        return $this->hasMany(LiveSet::class);
+    }
 }

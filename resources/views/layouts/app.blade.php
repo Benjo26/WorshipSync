@@ -27,7 +27,7 @@
             --radius-xl: 34px;
             --radius-lg: 26px;
             --radius-md: 20px;
-            --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+            --font-display: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
             --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
         }
 
@@ -97,6 +97,14 @@
         a {
             color: inherit;
             text-decoration: none;
+        }
+
+        body,
+        button,
+        input,
+        textarea,
+        select {
+            font-family: var(--font-body);
         }
 
         .shell {
@@ -190,6 +198,44 @@
             text-transform: uppercase;
             letter-spacing: 0.16em;
             font-size: 0.66rem;
+        }
+
+        .brand-text strong,
+        .landing-hero h1,
+        .hero h1,
+        .page-head h1,
+        .player-head h1,
+        .library-hero h1,
+        .section-head h2,
+        .feature-card h2,
+        .song-card h2,
+        .live-set-card h2,
+        .empty-card h2,
+        .studio-side h2,
+        .chart-section h2,
+        .live-song-option h3,
+        .live-set-preview-copy h2,
+        .stat-card strong,
+        .control-value,
+        .tempo-readout {
+            font-family: var(--font-body);
+            font-variation-settings: normal;
+            text-rendering: optimizeLegibility;
+        }
+
+        .eyebrow,
+        .song-meta,
+        .control-label,
+        .brand-text small,
+        .player-head p,
+        .section-lead,
+        .song-card p,
+        .live-set-card p,
+        .empty-card p,
+        .chart-field span,
+        .metadata-grid label span {
+            font-family: var(--font-body);
+            letter-spacing: 0.08em;
         }
 
         .topnav a:not(.button) {
@@ -2036,6 +2082,7 @@
                     </form>
                     <a href="{{ route('dashboard') }}">Dashboard</a>
                     <a href="{{ route('songs.index') }}">Songs</a>
+                    <a href="{{ route('live-sets.index') }}">Live Sets</a>
                     <a class="button ghost" href="{{ route('songs.create') }}">New Song</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -2059,7 +2106,7 @@
             <nav class="mobile-tabbar" aria-label="Mobile navigation">
                 <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'is-active' : '' }}">Dashboard</a>
                 <a href="{{ route('songs.index') }}" class="{{ request()->routeIs('songs.index', 'songs.player') ? 'is-active' : '' }}">Songs</a>
-                <a href="{{ route('songs.create') }}" class="{{ request()->routeIs('songs.create') ? 'is-active is-accent' : 'is-accent' }}">New</a>
+                <a href="{{ route('live-sets.index') }}" class="{{ request()->routeIs('live-sets.*') ? 'is-active' : '' }}">Sets</a>
             </nav>
         @endauth
     </div>

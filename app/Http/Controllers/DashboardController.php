@@ -21,9 +21,11 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $songs = $user->songs()->latest()->take(8)->get();
+        $liveSets = $user->liveSets()->withCount('songs')->latest()->take(4)->get();
 
         return view('dashboard', [
             'songs' => $songs,
+            'liveSets' => $liveSets,
             'songCount' => $user->songs()->count(),
             'averageBpm' => $user->songs()->avg('bpm'),
         ]);

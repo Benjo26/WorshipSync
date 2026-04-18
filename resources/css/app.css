@@ -12,7 +12,7 @@
     --warning: #a44536;
     --shadow: 0 22px 60px rgba(34, 25, 15, 0.07);
     --shadow-deep: 0 42px 110px rgba(20, 16, 12, 0.14);
-    --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    --font-display: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -82,6 +82,14 @@ body.app-body::before {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--font-body);
 }
 
 .shell {
@@ -164,6 +172,44 @@ a {
     color: #fffaf3;
     font-family: var(--font-body);
     font-weight: 800;
+}
+
+.brand-text strong,
+.landing-hero h1,
+.hero h1,
+.page-head h1,
+.player-head h1,
+.library-hero h1,
+.section-head h2,
+.feature-card h2,
+.song-card h2,
+.live-set-card h2,
+.empty-card h2,
+.studio-side h2,
+.chart-section h2,
+.live-song-option h3,
+.live-set-preview-copy h2,
+.stat-card strong,
+.control-value,
+.tempo-readout {
+    font-family: var(--font-body);
+    font-variation-settings: normal;
+    text-rendering: optimizeLegibility;
+}
+
+.eyebrow,
+.song-meta,
+.control-label,
+.brand-text small,
+.player-head p,
+.section-lead,
+.song-card p,
+.live-set-card p,
+.empty-card p,
+.chart-field span,
+.metadata-grid label span {
+    font-family: var(--font-body);
+    letter-spacing: 0.08em;
 }
 
 .brand-text small {
@@ -467,6 +513,7 @@ body.app-body .library-hero,
 body.app-body .player-shell,
 body.app-body .feature-card,
 body.app-body .song-card,
+body.app-body .live-set-card,
 body.app-body .panel,
 body.app-body .empty-card,
 body.app-body .flash,
@@ -488,12 +535,14 @@ body.app-body .player-head h1,
 body.app-body .library-hero h1,
 body.app-body .section-head h2,
 body.app-body .song-card h2,
+body.app-body .live-set-card h2,
 body.app-body .empty-card h2 {
     color: #fff8ef;
 }
 
 body.app-body .section-lead,
 body.app-body .song-card p,
+body.app-body .live-set-card p,
 body.app-body .empty-card p,
 body.app-body .player-head p,
 body.app-body .song-meta,
@@ -532,10 +581,25 @@ body.app-body .song-tags span,
 body.app-body .player-meta span,
 body.app-body .measure,
 body.app-body .beat-pill,
-body.app-body .preview-meta span {
+body.app-body .preview-meta span,
+body.app-body .selection-count {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.08);
     color: #f2eee7;
+}
+
+body.app-body .live-song-option,
+body.app-body .live-set-item,
+body.app-body .live-set-empty,
+body.app-body .live-set-preview-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.app-body .live-song-option h3,
+body.app-body .live-set-item-copy strong,
+body.app-body .live-set-preview-copy h2 {
+    color: #fff8ef;
 }
 
 body.app-body .button.ghost {
@@ -1057,6 +1121,23 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
     align-self: flex-start;
 }
 
+.live-set-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.live-set-card {
+    display: grid;
+    gap: 12px;
+    min-height: 188px;
+    padding: 22px;
+    border-radius: 30px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+    box-shadow: var(--shadow);
+}
+
 .studio-shell {
     display: grid;
     grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
@@ -1084,6 +1165,136 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 .studio-grid {
     display: grid;
     gap: 22px;
+}
+
+.live-set-builder {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    gap: 18px;
+}
+
+.live-set-browser,
+.live-set-order,
+.live-set-preview-card {
+    display: grid;
+    gap: 16px;
+}
+
+.live-set-section-head,
+.live-set-preview-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.selection-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(17, 92, 79, 0.08);
+    color: var(--accent-strong);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.live-song-list,
+.live-set-selection,
+.live-set-preview-list {
+    display: grid;
+    gap: 12px;
+}
+
+.live-song-option,
+.live-set-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(84, 65, 43, 0.08);
+    background: rgba(255, 255, 255, 0.56);
+}
+
+.live-song-option h3,
+.live-set-item-copy strong,
+.live-set-preview-copy h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.live-set-selection {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.live-set-item {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.live-set-order-pill {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.live-set-item-copy,
+.live-set-preview-copy {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+}
+
+.live-set-item-copy small {
+    margin: 0;
+}
+
+.live-set-item-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.live-set-empty {
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px dashed rgba(84, 65, 43, 0.18);
+    background: rgba(255, 255, 255, 0.42);
+}
+
+.live-set-empty.is-hidden {
+    display: none;
+}
+
+.live-set-preview-list {
+    gap: 18px;
+}
+
+.live-set-preview-card {
+    padding: 22px;
+    border-radius: 28px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 239, 229, 0.92));
+}
+
+.live-set-preview-head {
+    align-items: center;
 }
 
 .editor-workspace {
@@ -1409,6 +1620,10 @@ small {
     .editor-workspace {
         grid-template-columns: 1fr;
     }
+
+    .live-set-builder {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 840px) {
@@ -1685,6 +1900,16 @@ small {
         gap: 10px;
     }
 
+    .live-song-option,
+    .live-set-item,
+    .live-set-preview-head {
+        grid-template-columns: 1fr;
+    }
+
+    .live-set-item-actions {
+        justify-content: flex-start;
+    }
+
     .song-tags {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1710,6 +1935,16 @@ small {
     }
 
     .song-card .inline-actions form .button {
+        width: 100%;
+    }
+
+    .live-set-item-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+    }
+
+    .live-set-item-actions .button {
         width: 100%;
     }
 
