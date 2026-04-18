@@ -16,6 +16,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('songs', SongController::class)->except('show');
+    Route::get('/live-sets/{liveSet}/pdf', [LiveSetController::class, 'pdf'])->name('live-sets.pdf');
     Route::resource('live-sets', LiveSetController::class);
     Route::get('/songs/{song}/player', [SongController::class, 'player'])->name('songs.player');
     Route::post('/logout', [GoogleController::class, 'logout'])->name('logout');

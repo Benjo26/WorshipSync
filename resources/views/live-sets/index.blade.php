@@ -31,6 +31,7 @@
                     </div>
                     <div class="inline-actions">
                         <a class="button ghost" href="{{ route('live-sets.show', $liveSet) }}">Preview</a>
+                        <a class="button subtle" href="{{ route('live-sets.pdf', $liveSet) }}" target="_blank" rel="noopener">PDF</a>
                         <a class="button subtle" href="{{ route('live-sets.edit', $liveSet) }}">Edit</a>
                         <form method="POST" action="{{ route('live-sets.destroy', $liveSet) }}" onsubmit="return confirm('Delete {{ addslashes($liveSet->name) }}? This cannot be undone.');">
                             @csrf

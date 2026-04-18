@@ -34,6 +34,7 @@
             <p class="section-lead">Every song below is shown in exact set order so your team can rehearse the service flow as one sequence.</p>
         </div>
         <div class="library-hero-actions">
+            <a class="button" href="{{ route('live-sets.pdf', $liveSet) }}" target="_blank" rel="noopener">Download PDF</a>
             <a class="button ghost" href="{{ route('live-sets.edit', $liveSet) }}">Edit Set</a>
         </div>
     </section>

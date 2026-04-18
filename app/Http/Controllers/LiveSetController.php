@@ -61,11 +61,19 @@ class LiveSetController extends Controller
 
         return view('live-sets.show', [
             'liveSet' => $liveSet,
-            'previewSongs' => $liveSet->songs->map(fn (Song $song, int $index) => [
-                'order' => $index + 1,
-                'song' => $song,
-                'chart' => app(ChordProParser::class)->parse($this->readChordPro($song)),
-            ]),
+            'previewSongs' => $this->previewSongs($liveSet),
+        ]);
+    }
+
+    public function pdf(LiveSet $liveSet): View
+    {
+        $this->authorizeLiveSet($liveSet);
+
+        $liveSet->load('songs');
+
+        return view('live-sets.pdf', [
+            'liveSet' => $liveSet,
+            'previewSongs' => $this->previewSongs($liveSet),
         ]);
     }
 
@@ -162,5 +170,14 @@ class LiveSetController extends Controller
         }
 
         return app(SongChartStorage::class)->read($song->chart_path);
+    }
+
+    private function previewSongs(LiveSet $liveSet): Collection
+    {
+        return $liveSet->songs->map(fn (Song $song, int $index) => [
+            'order' => $index + 1,
+            'song' => $song,
+            'chart' => app(ChordProParser::class)->parse($this->readChordPro($song)),
+        ]);
     }
 }
