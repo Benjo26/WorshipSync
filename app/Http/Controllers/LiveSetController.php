@@ -9,6 +9,7 @@ use App\Services\ChordProParser;
 use App\Services\SongChartStorage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -136,14 +137,18 @@ class LiveSetController extends Controller
 
     private function syncSongs(LiveSet $liveSet, array $songIds): void
     {
-        $liveSet->songs()->sync(
-            collect($songIds)
-                ->values()
-                ->mapWithKeys(fn (int $songId, int $index) => [
-                    $songId => ['position' => $index + 1],
-                ])
-                ->all()
-        );
+        DB::transaction(function () use ($liveSet, $songIds): void {
+            $liveSet->songs()->detach();
+
+            $liveSet->songs()->attach(
+                collect($songIds)
+                    ->values()
+                    ->mapWithKeys(fn (int $songId, int $index) => [
+                        $songId => ['position' => $index + 1],
+                    ])
+                    ->all()
+            );
+        });
     }
 
     private function readChordPro(Song $song): string

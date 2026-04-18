@@ -8,13 +8,13 @@ class LiveSetRequest extends FormRequest
 {
     protected function prepareForValidation(): void
     {
-        $songs = array_values(array_filter(
+        $songs = array_values(array_unique(array_filter(
             array_map(
                 static fn ($songId) => is_numeric($songId) ? (int) $songId : null,
                 (array) $this->input('songs', [])
             ),
             static fn ($songId) => $songId !== null
-        ));
+        )));
 
         $this->merge([
             'name' => trim((string) $this->input('name', '')),
