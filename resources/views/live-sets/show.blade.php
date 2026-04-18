@@ -1,6 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $barChordPattern = '/^\|?\s*[A-G][^|]*\|/';
+
+        $renderLine = function (string $line) use ($barChordPattern): string {
+            if (preg_match($barChordPattern, trim($line))) {
+                $measures = collect(explode('|', $line))
+                    ->map(fn (string $segment) => trim($segment))
+                    ->filter()
+                    ->map(fn (string $segment) => '<span class="measure">' . e($segment) . '</span>')
+                    ->implode('');
+
+                if ($measures !== '') {
+                    return '<span class="measure-line">' . $measures . '</span>';
+                }
+            }
+
+            $escaped = e($line);
+
+            return preg_replace_callback(
+                '/\[([^\]]+)\]/',
+                fn (array $matches) => '<span class="chord">[' . e($matches[1]) . ']</span>',
+                $escaped
+            ) ?? $escaped;
+        };
+    @endphp
+
     <section class="library-hero hero-premium">
         <div class="library-hero-copy">
             <p class="eyebrow">Live Preview</p>
@@ -69,7 +95,7 @@
                                 <h2>{{ $section['name'] }}</h2>
                                 <div class="chart-lines">
                                     @foreach ($section['lines'] as $line)
-                                        <div>{{ $line }}</div>
+                                        <div>{!! $renderLine($line) !!}</div>
                                     @endforeach
                                 </div>
                             </article>
