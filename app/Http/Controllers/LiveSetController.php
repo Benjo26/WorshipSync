@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LiveSetController extends Controller
 {
-    public function __construct(
-        private readonly ChordProParser $chordProParser,
-        private readonly SongChartStorage $chartStorage
-    ) {
-    }
-
     public function index(): View
     {
         $liveSets = Auth::user()
@@ -69,7 +63,7 @@ class LiveSetController extends Controller
             'previewSongs' => $liveSet->songs->map(fn (Song $song, int $index) => [
                 'order' => $index + 1,
                 'song' => $song,
-                'chart' => $this->chordProParser->parse($this->readChordPro($song)),
+                'chart' => app(ChordProParser::class)->parse($this->readChordPro($song)),
             ]),
         ]);
     }
@@ -162,6 +156,6 @@ class LiveSetController extends Controller
             return '';
         }
 
-        return $this->chartStorage->read($song->chart_path);
+        return app(SongChartStorage::class)->read($song->chart_path);
     }
 }
