@@ -1171,8 +1171,8 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 }
 
 .studio-shell-single {
-    grid-template-columns: minmax(0, 920px);
-    justify-content: start;
+    grid-template-columns: minmax(0, 1120px);
+    justify-content: center;
 }
 
 .studio-main {
@@ -1194,8 +1194,9 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 
 .live-set-builder {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-    gap: 18px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    gap: 20px;
+    align-items: start;
 }
 
 .live-set-browser,
@@ -1203,6 +1204,7 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 .live-set-preview-card {
     display: grid;
     gap: 16px;
+    min-width: 0;
 }
 
 .live-set-section-head,
@@ -1235,13 +1237,20 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 .live-song-option,
 .live-set-item {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) minmax(138px, 154px);
+    gap: 16px;
     align-items: center;
-    padding: 16px;
+    padding: 18px;
     border-radius: 20px;
     border: 1px solid rgba(84, 65, 43, 0.08);
     background: rgba(255, 255, 255, 0.56);
+}
+
+.live-song-option > div {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    min-width: 0;
 }
 
 .live-song-option h3,
@@ -1261,6 +1270,13 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
 
 .live-set-item {
     grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.live-song-option .button {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    align-self: stretch;
 }
 
 .live-set-order-pill {
@@ -1747,6 +1763,27 @@ small {
 
     .live-set-builder {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .live-song-option,
+    .live-set-item {
+        grid-template-columns: 1fr;
+    }
+
+    .live-song-option .button,
+    .live-set-item-actions {
+        width: 100%;
+    }
+
+    .live-set-item-actions {
+        justify-content: stretch;
+    }
+
+    .live-set-item-actions .button {
+        flex: 1 1 0;
+        min-width: 0;
     }
 }
 

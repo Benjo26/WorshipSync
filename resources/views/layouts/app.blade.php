@@ -1141,8 +1141,8 @@
             }
 
             .studio-shell-single {
-                grid-template-columns: minmax(0, 920px);
-                justify-content: start;
+                grid-template-columns: minmax(0, 1120px);
+                justify-content: center;
             }
 
             .studio-main {
@@ -1160,6 +1160,82 @@
         .studio-grid {
             display: grid;
             gap: 24px;
+        }
+
+        .live-set-builder {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .live-set-browser,
+        .live-set-order {
+            display: grid;
+            gap: 16px;
+            min-width: 0;
+        }
+
+        .live-set-section-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .selection-count {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(17, 92, 79, 0.08);
+            color: var(--accent-strong);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .live-song-list,
+        .live-set-selection {
+            display: grid;
+            gap: 12px;
+        }
+
+        .live-song-option,
+        .live-set-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(138px, 154px);
+            gap: 16px;
+            align-items: center;
+            padding: 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(84, 65, 43, 0.08);
+            background: rgba(255, 255, 255, 0.56);
+        }
+
+        .live-song-option > div {
+            display: grid;
+            gap: 10px;
+            align-content: start;
+            min-width: 0;
+        }
+
+        .live-set-item {
+            grid-template-columns: auto minmax(0, 1fr) auto;
+        }
+
+        .live-song-option .button {
+            width: 100%;
+            min-width: 0;
+            justify-content: center;
+            align-self: stretch;
+        }
+
+        .live-set-item-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
         }
 
         .metadata-grid {
@@ -1543,6 +1619,31 @@
 
                 .studio-shell-single {
                     grid-template-columns: 1fr;
+                }
+
+                .live-set-builder {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .live-song-option,
+                .live-set-item {
+                    grid-template-columns: 1fr;
+                }
+
+                .live-song-option .button,
+                .live-set-item-actions {
+                    width: 100%;
+                }
+
+                .live-set-item-actions {
+                    justify-content: stretch;
+                }
+
+                .live-set-item-actions .button {
+                    flex: 1 1 0;
+                    min-width: 0;
                 }
             }
 
