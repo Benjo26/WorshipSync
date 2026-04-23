@@ -1788,6 +1788,65 @@
                 .live-set-create-hero .section-lead {
                     font-size: 0.92rem;
                 }
+
+                .live-set-form-shell {
+                    grid-template-columns: 1fr;
+                }
+
+                .live-set-form-shell .studio-main {
+                    padding: 16px;
+                }
+
+                .live-set-form-shell .live-set-builder {
+                    grid-template-columns: 1fr;
+                    gap: 14px;
+                }
+
+                .live-set-form-shell .live-set-browser,
+                .live-set-form-shell .live-set-order {
+                    gap: 12px;
+                }
+
+                .live-set-form-shell .live-set-section-head {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 8px;
+                }
+
+                .live-set-form-shell .selection-count {
+                    justify-self: flex-start;
+                }
+
+                .live-set-form-shell .live-song-option,
+                .live-set-form-shell .live-set-item {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                    padding: 14px;
+                }
+
+                .live-set-form-shell .live-song-option .button {
+                    width: 100%;
+                    min-height: 42px;
+                }
+
+                .live-set-form-shell .live-set-item-actions {
+                    width: 100%;
+                    justify-content: stretch;
+                }
+
+                .live-set-form-shell .live-set-item-actions .button {
+                    flex: 1 1 0;
+                    min-width: 0;
+                }
+
+                .live-set-form-shell .song-tags {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+
+                .live-set-form-shell .song-tags span {
+                    justify-content: center;
+                    text-align: center;
+                }
             }
 
             @media (max-width: 840px) {
