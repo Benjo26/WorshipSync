@@ -157,10 +157,16 @@
             backdrop-filter: blur(18px);
         }
 
+        .topbar > .topnav {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
         .brand {
             display: inline-flex;
             align-items: center;
             gap: 14px;
+            flex: 0 0 auto;
         }
 
         .brand-mark {
@@ -241,6 +247,25 @@
         .topnav a:not(.button) {
             color: rgba(245, 236, 225, 0.78);
             font-weight: 600;
+        }
+
+        .topnav {
+            justify-content: flex-end;
+            flex-wrap: nowrap;
+            min-width: 0;
+        }
+
+        .topnav a,
+        .topnav form {
+            flex: 0 0 auto;
+            min-width: 0;
+        }
+
+        .topnav a:not(.button),
+        .topnav .button,
+        .topnav form .button {
+            min-height: 56px;
+            white-space: nowrap;
         }
 
         body.landing-body .topbar {
@@ -984,8 +1009,8 @@
         }
 
         .global-search-form {
-            flex: 1 1 260px;
-            max-width: 320px;
+            flex: 1 1 240px;
+            max-width: 310px;
         }
 
         .search-input {
@@ -1007,7 +1032,7 @@
         }
 
         .topnav .global-search-form {
-            margin-right: 4px;
+            margin-right: 10px;
         }
 
         .song-card {
