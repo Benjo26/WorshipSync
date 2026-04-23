@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="library-hero hero-premium">
+    <section class="library-hero hero-premium live-set-create-hero">
         <div class="library-hero-copy">
             <p class="eyebrow">Live Set</p>
             <h1>New Live Set</h1>
@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <form method="POST" action="{{ route('live-sets.store') }}" class="studio-shell studio-shell-single">
+    <form method="POST" action="{{ route('live-sets.store') }}" class="studio-shell studio-shell-single live-set-form-shell">
         @csrf
         <section class="panel studio-main">
             @include('live-sets._form', ['liveSet' => null])

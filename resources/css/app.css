@@ -1340,6 +1340,137 @@ body.app-body .player-toolbar .button.ghost:focus-visible {
     color: #ffb181;
 }
 
+.live-set-create-hero {
+    padding: 18px 22px;
+    min-height: 0;
+}
+
+.live-set-create-hero .library-hero-copy {
+    max-width: 620px;
+}
+
+.live-set-create-hero h1 {
+    margin-top: 6px;
+    max-width: 9ch;
+    font-size: clamp(1.85rem, 3.4vw, 3rem);
+    line-height: 0.94;
+}
+
+.live-set-create-hero .section-lead {
+    margin-top: 10px;
+    max-width: 42ch;
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.live-set-create-hero .library-hero-actions .button {
+    min-height: 48px;
+    min-width: 0;
+    padding-inline: 18px;
+}
+
+.live-set-form-shell {
+    grid-template-columns: minmax(0, 980px);
+}
+
+.live-set-form-shell .studio-main {
+    gap: 16px;
+    padding: 18px;
+}
+
+.live-set-form-shell .studio-grid {
+    gap: 16px;
+}
+
+.live-set-form-shell label {
+    gap: 8px;
+}
+
+.live-set-form-shell input {
+    min-height: 50px;
+    padding: 12px 15px;
+}
+
+.live-set-form-shell .live-set-builder {
+    gap: 16px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+}
+
+.live-set-form-shell .live-set-browser,
+.live-set-form-shell .live-set-order {
+    gap: 14px;
+}
+
+.live-set-form-shell .live-set-section-head {
+    gap: 12px;
+}
+
+.live-set-form-shell .selection-count {
+    min-height: 30px;
+    padding: 0 10px;
+    font-size: 0.76rem;
+}
+
+.live-set-form-shell .live-song-list,
+.live-set-form-shell .live-set-selection {
+    gap: 10px;
+}
+
+.live-set-form-shell .live-song-option,
+.live-set-form-shell .live-set-item {
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+}
+
+.live-set-form-shell .live-song-option {
+    grid-template-columns: minmax(0, 1fr) 112px;
+}
+
+.live-set-form-shell .live-song-option > div {
+    gap: 8px;
+}
+
+.live-set-form-shell .live-song-option h3,
+.live-set-form-shell .live-set-item-copy strong {
+    font-size: 0.98rem;
+}
+
+.live-set-form-shell .song-meta {
+    font-size: 0.74rem;
+}
+
+.live-set-form-shell .song-tags {
+    gap: 8px;
+}
+
+.live-set-form-shell .song-tags span {
+    min-height: 30px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+}
+
+.live-set-form-shell .live-song-option .button {
+    min-height: 44px;
+    border-radius: 14px;
+    padding-inline: 14px;
+    font-size: 0.94rem;
+}
+
+.live-set-form-shell .live-set-empty {
+    gap: 8px;
+    padding: 16px;
+}
+
+.live-set-form-shell .live-set-empty h2 {
+    font-size: 1.18rem;
+}
+
+.live-set-form-shell .live-set-empty p,
+.live-set-form-shell .live-set-item-copy small {
+    font-size: 0.9rem;
+}
+
 .button.is-static {
     pointer-events: none;
     user-select: none;
@@ -1784,6 +1915,18 @@ small {
     .live-set-item-actions .button {
         flex: 1 1 0;
         min-width: 0;
+    }
+
+    .live-set-create-hero {
+        padding: 16px 18px;
+    }
+
+    .live-set-create-hero h1 {
+        font-size: clamp(1.75rem, 9vw, 2.35rem);
+    }
+
+    .live-set-create-hero .section-lead {
+        font-size: 0.92rem;
     }
 }
 
